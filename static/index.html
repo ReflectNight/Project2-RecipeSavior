@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<!--All links here!-->
+		<link href="reset.css" rel="stylesheet" type="text.css">
+		<link href="style.css" rel="stylesheet" type="text.css">
+		<link href='http://fonts.googleapis.com/css?family=Petit+Formal+Script' rel='stylesheet' type='text/css'>
+		<title>Recipe Savior</title>
+	</head>
+
+	<!--Site layout-->
+	<body>
+		<div class "bigContainer">
+
+		<div class="canvas">
+			<canvas id="myCanvas" width="1000" height="700" style="border:1px solid #000000;">
+			Your browser does not support HTML5</canvas>
+		</div>
+
+
+		<div class="container">
+
+			<div class="header">
+
+				<table align="center">
+				<tr>
+				<td><img src="http://i.imgur.com/SYRiHFv.png"></td>
+				<td><h1>My Recipe Savior</h1></td>
+				<td><img src="http://i.imgur.com/pD6F4bs.png"></td>
+				</tr>
+				</table>	
+
+				<h1>Recipe Saver</h1>
+
+			</div>
+
+			<div class="picbox">
+			 
+			</div>
+
+			<div class="recipebox">
+			
+				<div class="displayPage">
+
+
+					<div id ="welcomePage" class ="notepad">
+						<h3>Welcome to Recipe Savior</h3> <br>
+						<p> This is a new way for you to keep track of all the recipies you love and use! 
+							You may add, delete, edit a recipe, or you may view all the recipies on file  <br><br>
+							To begin, enter a new recipe using the left menu! <br>
+						</p>
+
+					</div>
+					<div id ="newRecipe" class ="notepad">
+
+					<form id="newForm" action="javascript:addRecipe()">
+						<h3>Enter a new recipe </h3><br>
+						Recipe Name: <input type="text" id="name"><br>
+						Ingredients: <br> <textarea class="stretcharea" id="ingre" rows = "5" cols = "40" 
+							placeholder = "enter ingredients here, separate each with a coma"></textarea> <br>
+							
+						Directions: <br> <textarea class="stretcharea" id="dir" rows = "10" cols = "40" 
+							placeholder= "enter directions here, separate each step with a new line"></textarea> <br>
+						Image: <input type="text" id="foodpic"><br>
+						
+						<input id="submitButton" name="Submit"  type="submit" 
+							value="Add New Recipe"/>
+
+					<!--</form>
+
+					<div id ="new" class ="notepad">
+
+						
+						<h3>New Recipe</h3>
+					
+						<form id="newForm">
+						<br>
+						Recipe Name: <input type="text" name="name"><br>
+						Ingredients: <br> <textarea class="strecharea" name="ingre" rows="5"cols ="40" placeholder="enter ingredients here, separate each with a coma"></textarea> <br>
+						Directions: <br> <textarea class="strecharea" name="dir" rows="10"cols ="40" placeholder="enter directions here, separate each step with a new line"></textarea> <br>
+						Image: <input type="text" name="foodpic"><br><br>
+						<button type="submit" name="submitNew" formmethod="post" > Add New Recipe </button>
+
+					</form>-->
+
+					</div>
+
+					<div id ="searchRecipe" class ="notepad">
+						<h3>Looking for something? </h3> <br>
+						<form id="searchForm">
+
+							<b>Search:</b>  <input type="text" name="search" placeholder="Type in a keyword here"><br><br>
+							<button name="search" formmethod="post" > Search </button>
+
+						</form>
+						<div id ="searchResults">
+						</div>
+
+					</div>
+					<div id ="editRecipe" class ="notepad">
+						<h3>Edit Your Recipe!</h3>
+						<div id="editForm">
+							<!--<button type="submit" name="edit" formmethod="post" > Finished editing</button>-->
+						</div>
+
+					</div>
+					<!--
+					<div id ="deleteRecipe" class ="notepad">
+						 maybe i dont need this idkk 
+					</div>-->
+					<div id ="displayRecipe" class ="notepad">
+
+						<!-- lets the user scroll through the recipe, needs left and right arrow-->
+					</div>
+				
+				</div><!--End display-->
+
+				<div class="menulist">
+					<ul>
+						<li id="menuview"><a href="#">View</a></li>
+						<li id="menunew"><a href="#">New</a></li>
+						<li id="menusearch"><a href="#">Search</a></li>
+						<li id="menuedit"><a href="#">Edit</a></li>
+						<li id="menudelete"><a href="#">Delete</a></li>
+					</ul>
+				</div>
+			</div><!--End recipebox-->
+
+			<div class= "footer">
+				Copyright 2013 Angela Qiu & Sarah Chen 
+			</div>
+		</div><!--End container-->
+
+
+		<div class="canvas">
+			<canvas id="myCanvas" width="500" height="700" ><!--style="border:1px solid #000000;"-->
+			Your browser does not support HTML5</canvas>
+		</div>
+
+		</div><!--End bigcontainer-->
+		
+		<!-- Script Tags -->
+		<script src="jquery-1.9.0.js"></script>
+		<script src="buttonfn.js"></script>
+		<!-- <script src="recipeaction.js"></script>
+		<script src="foodaction.js"></script> -->
+		<script src="canvasfn.js"></script>
+	  <script src="client.js"></script>
+	</body>
+
+</html>

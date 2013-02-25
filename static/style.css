@@ -1,0 +1,158 @@
+/*
+Style.css for project 4
+*/
+
+body{
+	font-size: 12px;
+	font-family: Verdana, Arial, sans-serif;
+	/*background-color: #FAE1EB;*/
+	text-align: center;
+
+}
+
+p{
+
+}
+
+a{
+
+}
+h1{
+	text-align: center;
+	font-size:40px;
+	color:black;
+	font-family: 'Petit Formal Script', cursive;
+}
+
+h3{
+	text-align: center;
+	font-size:14px;
+	font-weight: bold;
+}
+
+
+.canvas{
+	position: absolute;
+	top:0px;
+	margin-left:auto;
+	margin-right:auto;
+
+}
+.container{
+	position: absolute;
+	top:0px;
+	/*background-color: #cccccc;*/
+	padding: 10px;
+	width: 980px;
+	height: 680px;
+	margin-left:auto;
+	margin-right:auto;
+	border:2px solid;
+	border-radius:10px;
+	background-image: url(http://www.pastelpatterns.com/large/largepattern-2.png);
+
+}
+.header{
+	height:60px;
+	background-color: #ffffff;
+	text-align: left;
+	border-radius:10px;
+	text-align: center;
+}
+
+.picbox{
+	float: left;
+	width:50%;
+	height: 580px;
+	/*background-color: #777777;*/
+}
+
+.recipebox{
+	float: right;
+	min-width: 300px;
+	width:50%;
+	height: 580px;
+	display:inline-block;
+}
+
+.footer{
+	text-align: center;
+	font-size: 8px;
+
+}
+
+.notepad{
+	text-align: left;
+	border:1px solid;
+	padding: 15px;
+	margin-top: 40px;
+	margin-right: 80px;
+	background-color: #fff4e0;
+	border-radius: 5px;
+	border-color: #ddccaa;
+	height: 500px;
+	border-right-width: 2px;
+	border-right-color: #886644;
+	border-bottom-width: 2px;
+	border-bottom-color:#886644;
+
+}
+.display{
+
+	
+}
+table
+{ 
+	margin-left: auto;
+	margin-right: auto;
+}
+textarea{
+	resize: none;
+	outline: none;
+	overflow: auto;
+	padding-bottom:20px;
+	width:95%;
+}
+
+.menulist {
+
+	position:absolute;
+	width: 70px;
+	top:100px;
+	right:0px;
+  	font-weight: bold;
+  	padding: 10px;
+  	margin-right: 10px;
+
+}
+.menulist ul{
+	list-style-type: none;
+	list-style: none;
+	text-align:left;
+
+}
+.menulist ul li {
+	padding-top: 15px;
+}
+.menulist ul li a{
+	color:#885511;
+	font-size: 16px;
+	background-color: white;
+	display: block;
+	padding-left: 2px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	text-decoration: none;
+	border-radius: 0px 5px 5px 0px;
+	border: 1px solid;
+	border-color: transparent;
+	border-top-color: #ffeecc;
+	border-bottom-color: #886644;
+	border-right-color:#bb9966;
+
+
+}
+.menulist ul li a:hover{
+	background-color: #885511;
+	color:white;
+}
