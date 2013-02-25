@@ -44,7 +44,7 @@ function loadRecipe(data){
 		"ingredients" : data.recipeList.ingredients,
 		"directions" : data.recipeList.directions,
 		"imageURL" : data.recipeList.imageURL};
-		
+	
 	var titleid = $("#displayText");
   	titleid.html("");
   	var ingreid = $("#inScroll");
@@ -52,6 +52,11 @@ function loadRecipe(data){
   	var dirid = $("#dirScroll");
   	dirid.html("");
 	
+	item.ingredients = "\n"+item.ingredients
+	item.ingredients = item.ingredients.split("\n").join("<br />- ");
+
+	item.directions = item.directions.split("\n").join("<br /><br />");
+
 	var title = $("<h4>").html(item.title);
 	var ingredients = $("<p>").html(item.ingredients);
 	var directions = $("<p>").html(item.directions);
@@ -59,12 +64,11 @@ function loadRecipe(data){
 	
 	titleid.append(title);
 	titleid.append("<br>");
-	ingreid.append("<br><h5>Ingredients: </h5><br>");
+	ingreid.append("<br><h5>Ingredients: </h5>");
 	ingreid.append(ingredients);
 	dirid.append("<br><h5>Directions: </h5><br>");
 	dirid.append(directions);
 	//imageURL: deal with later
-	
 	
 }
 
