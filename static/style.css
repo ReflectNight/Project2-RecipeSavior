@@ -17,6 +17,7 @@ p{
 a{
 
 }
+
 h1{
 	text-align: center;
 	font-size:40px;
@@ -30,6 +31,11 @@ h3{
 	font-weight: bold;
 }
 
+h4{
+	text-align: center;
+	font-size:16px;
+	font-family: 'Petit Formal Script', cursive;
+}	
 
 .canvas{
 	position: absolute;
@@ -63,15 +69,14 @@ h3{
 .picbox{
 	float: left;
 	width:50%;
-	height: 580px;
+	height: 600px;
 	/*background-color: #777777;*/
 }
 
 .recipebox{
 	float: right;
-	min-width: 300px;
 	width:50%;
-	height: 580px;
+	height: 600px;
 	display:inline-block;
 }
 
@@ -80,7 +85,21 @@ h3{
 	font-size: 8px;
 
 }
+#inScroll{
+	height:150px;
+}
+#dirScroll{
+	height:250px;
+}
+.scrollbox{
 
+
+	width:450;
+	border:1px solid #ccc;
+	font: 13px;
+	/*font:16px/26px Georgia, Garamond, Serif;*/
+	overflow:auto;
+}
 .notepad{
 	text-align: left;
 	border:1px solid;
@@ -96,10 +115,6 @@ h3{
 	border-bottom-width: 2px;
 	border-bottom-color:#886644;
 
-}
-.display{
-
-	
 }
 table
 { 

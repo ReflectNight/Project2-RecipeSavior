@@ -41,6 +41,32 @@ function refresh(){
 	console.log("refreshing...");	
 }
 
+function showRecipe(id){
+	$("#displayRecipe").html(
+		<h4>id.title</h4> <br>
+		$("#inScroll").html(id.ingredients);
+		$("#inScroll").html(id.directions);
+
+	);
+
+}
+
+
+function search(query){
+	var listOfItems;
+	for(item in recipeList){
+	    if (item.title.indexOf(query)!==-1){
+	        listOfItems.push(item);
+	    }
+	}
+	return listOfItems;
+
+}
+
+
+
+
+
 /*
  * get(): Gets all recipes. Used for browsing recipes.
 */
@@ -61,14 +87,14 @@ function get(){
  * getRecipe(): Gets a single recipe. Used for reading, editing, or
  * deleting a preexisting recipe.
 */
-	function getRecipe(id){
-	 $.ajax({
-    type: "get",
-		url: "/recipeList/" + encodeURI(id),
-		success: function(data) {
-			refresh(data);
-		}
-  });
+function getRecipe(id){
+ $.ajax({
+type: "get",
+	url: "/recipeList/" + encodeURI(id),
+	success: function(data) {
+		refresh(data);
+	}
+});
 }
 
 /*

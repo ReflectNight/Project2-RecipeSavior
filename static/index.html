@@ -29,9 +29,7 @@
 				<td><h1>My Recipe Savior</h1></td>
 				<td><img src="http://i.imgur.com/pD6F4bs.png"></td>
 				</tr>
-				</table>	
-
-				<h1>Recipe Saver</h1>
+				</table>
 
 			</div>
 
@@ -58,10 +56,10 @@
 						<h3>Enter a new recipe </h3><br>
 						Recipe Name: <input type="text" id="name"><br>
 						Ingredients: <br> <textarea class="stretcharea" id="ingre" rows = "5" cols = "40" 
-							placeholder = "enter ingredients here, separate each with a coma"></textarea> <br>
+							placeholder = "Enter ingredient list here, separate with new line"></textarea> <br>
 							
 						Directions: <br> <textarea class="stretcharea" id="dir" rows = "10" cols = "40" 
-							placeholder= "enter directions here, separate each step with a new line"></textarea> <br>
+							placeholder= "Enter directions here, separate each step with a new line"></textarea> <br>
 						Image: <input type="text" id="foodpic"><br>
 						
 						<input id="submitButton" name="Submit"  type="submit" 
@@ -88,7 +86,7 @@
 
 					<div id ="searchRecipe" class ="notepad">
 						<h3>Looking for something? </h3> <br>
-						<form id="searchForm">
+						<form id="searchForm" action="javascript:search()">
 
 							<b>Search:</b>  <input type="text" name="search" placeholder="Type in a keyword here"><br><br>
 							<button name="search" formmethod="post" > Search </button>
@@ -111,6 +109,10 @@
 					</div>-->
 					<div id ="displayRecipe" class ="notepad">
 
+						<div id="inScroll" class="scrollbox" >
+						</div>
+						<div id="dirScroll" class="scrollbox">
+						</div>
 						<!-- lets the user scroll through the recipe, needs left and right arrow-->
 					</div>
 				
