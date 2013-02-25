@@ -34,7 +34,8 @@ function getRandomRecipe(){
 	}
 	else{
 		var randomID = Math.floor(Math.random()*recipeList.length);
-		getRecipe(randomID);}
+		getRecipe(randomID);
+	}
 }
 
 function loadRecipe(data){
@@ -44,20 +45,24 @@ function loadRecipe(data){
 		"directions" : data.recipeList.directions,
 		"imageURL" : data.recipeList.imageURL};
 		
-	var container = $("#displayRecipe");
-  container.html("");
+	var titleid = $("#displayText");
+  	titleid.html("");
+  	var ingreid = $("#inScroll");
+  	ingreid.html("");
+  	var dirid = $("#dirScroll");
+  	dirid.html("");
 	
-	var title = $("<p>").html(item.title);
+	var title = $("<h4>").html(item.title);
 	var ingredients = $("<p>").html(item.ingredients);
 	var directions = $("<p>").html(item.directions);
 	var imageURL = $("<p>").html(item.imageURL);
 	
-	container.append("Recipe Name: ");
-	container.append(title);
-	container.append("<br>Ingredients: <br>");
-	container.append(ingredients);
-	container.append("<br>Directions: <br>");
-	container.append(directions);
+	titleid.append(title);
+	titleid.append("<br>");
+	ingreid.append("<br><h5>Ingredients: </h5><br>");
+	ingreid.append(ingredients);
+	dirid.append("<br><h5>Directions: </h5><br>");
+	dirid.append(directions);
 	//imageURL: deal with later
 	
 	

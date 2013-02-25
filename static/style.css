@@ -17,6 +17,16 @@ p{
 a{
 
 }
+.left{
+	float:left;
+}
+.right{
+	float:right;
+}
+.clear{
+	clear:both;
+}
+
 
 h1{
 	text-align: center;
@@ -33,9 +43,14 @@ h3{
 
 h4{
 	text-align: center;
-	font-size:16px;
+	font-size:18px;
 	font-family: 'Petit Formal Script', cursive;
 }	
+h5{
+	text-align: left;
+	font-size:14px;
+	font-weight: bold;
+}
 
 .canvas{
 	position: absolute;
@@ -91,16 +106,24 @@ h4{
 #dirScroll{
 	height:250px;
 }
+#recipeArrow{
+	/*position:absolute;
+	bottom:20px;*/
+	text-align: center;
+
+}
 .scrollbox{
 
-
 	width:450;
-	border:1px solid #ccc;
+	
 	font: 13px;
-	/*font:16px/26px Georgia, Garamond, Serif;*/
+	/*
+	border:1px solid #ccc;
+	font:16px/26px Georgia, Garamond, Serif;*/
 	overflow:auto;
 }
 .notepad{
+	position:relative;
 	text-align: left;
 	border:1px solid;
 	padding: 15px;
