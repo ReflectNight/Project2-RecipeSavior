@@ -11,6 +11,8 @@ $('#menuview').click(function(){
 	
 	hideEverything();
 	$('#displayRecipe').show();
+	$('#menuedit').show();
+	$('#menudelete').show();
 	getRandomRecipe();
 });
 
@@ -40,4 +42,6 @@ function hideEverything(){
 	$('#deleteRecipe').hide();
 	$('#displayRecipe').hide();
 	$('#welcomePage').hide();
+	$('#menuedit').hide();
+	$('#menudelete').hide();
 }
