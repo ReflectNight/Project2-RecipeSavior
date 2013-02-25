@@ -38,7 +38,7 @@ function getRandomRecipe(){
 	}
 }
 
-function loadRecipe(data){
+function loadRecipe(id, data){
 	var item = 
 		{"title" : data.recipeList.title,
 		"ingredients" : data.recipeList.ingredients,
@@ -70,6 +70,24 @@ function loadRecipe(data){
 	dirid.append(directions);
 	//imageURL: deal with later
 	
+	// When the Delete button is clicked, delete the block.
+		$("#menudelete").click(function() {
+			var element = $(this).parent();
+			var id = element.attr("id");
+			del(id);
+			console.log(id);
+			if(recipeList.length === 0)
+				alert("ERROR: No recipes found!");
+			else if (id === recipeList.length)
+				getRecipe(0);
+			else getRecipe(id);
+		});
+		
+	// When the Edit button is clicked, redirect to editing page.
+		$("#menuedit").click(function() {
+			// code here
+		});
+	
 }
 
 // refresh: refreshes the html; redirects to new page? may have to
@@ -82,8 +100,8 @@ function refresh(){
 		return;
 	}
 	
-	if (arguments.length > 0){
-		loadRecipe(arguments[0]);
+	if (arguments.length === 2){
+		loadRecipe(arguments[0], arguments[1]);
 	}
 	
 	console.log("refreshing...");	
@@ -114,7 +132,7 @@ function get(){
     type: "get",
 		url: "/recipeList/" + encodeURI(id),
 		success: function(data) {
-			refresh(data);
+			refresh(id, data);
 		}
   });
 }
@@ -182,6 +200,7 @@ function del(id){
       type: "delete",
       url: "/recipeList/" + id,
       success: function(data) { 
+				console.log("deletion success");
 				recipeList.splice(id, 1);
 				refresh();
       }
