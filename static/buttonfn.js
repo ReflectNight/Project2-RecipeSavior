@@ -34,7 +34,9 @@ $('#menuedit').click(function(){
 	$('#editRecipe').show();
 });
 $('#viewRarrow').click(function(){
-	
+	var element = $(this).parent();
+	var id = element.attr("id");
+
 	
 });
 $('#viewLarrow').click(function(){
