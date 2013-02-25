@@ -28,6 +28,41 @@ function addRecipe(){
 		imageURLInput.val("");
 }
 
+function getRandomRecipe(){
+	if(recipeList.length === 0){
+		alert("ERROR: No recipes found!");
+	}
+	else{
+		var randomID = Math.floor(Math.random()*recipeList.length);
+		getRecipe(randomID);}
+}
+
+function loadRecipe(data){
+	var item = 
+		{"title" : data.recipeList.title,
+		"ingredients" : data.recipeList.ingredients,
+		"directions" : data.recipeList.directions,
+		"imageURL" : data.recipeList.imageURL};
+		
+	var container = $("#displayRecipe");
+  container.html("");
+	
+	var title = $("<p>").html(item.title);
+	var ingredients = $("<p>").html(item.ingredients);
+	var directions = $("<p>").html(item.directions);
+	var imageURL = $("<p>").html(item.imageURL);
+	
+	container.append("Recipe Name: ");
+	container.append(title);
+	container.append("<br>Ingredients: <br>");
+	container.append(ingredients);
+	container.append("<br>Directions: <br>");
+	container.append(directions);
+	//imageURL: deal with later
+	
+	
+}
+
 // refresh: refreshes the html; redirects to new page? may have to
 // specify the "refresh" function based on what type of command
 // we are executing.
@@ -38,35 +73,12 @@ function refresh(){
 		return;
 	}
 	
+	if (arguments.length > 0){
+		loadRecipe(arguments[0]);
+	}
+	
 	console.log("refreshing...");	
 }
-
-function showRecipe(id){
-	$.ajax({
-	$("#displayRecipe").html(
-		$("displayText").html(<h4>id.title</h4>);
-		$("#inScroll").html(id.ingredients);
-		$("#inScroll").html(id.directions);
-
-	);
-	});
-}
-
-
-function search(query){
-	var listOfItems;
-	for(item in recipeList){
-	    if (item.title.indexOf(query)!==-1){
-	        listOfItems.push(item);
-	    }
-	}
-	return listOfItems;
-
-}
-
-
-
-
 
 /*
  * get(): Gets all recipes. Used for browsing recipes.
@@ -88,14 +100,14 @@ function get(){
  * getRecipe(): Gets a single recipe. Used for reading, editing, or
  * deleting a preexisting recipe.
 */
-function getRecipe(id){
- $.ajax({
-type: "get",
-	url: "/recipeList/" + encodeURI(id),
-	success: function(data) {
-		refresh(data);
-	}
-});
+	function getRecipe(id){
+	 $.ajax({
+    type: "get",
+		url: "/recipeList/" + encodeURI(id),
+		success: function(data) {
+			refresh(data);
+		}
+  });
 }
 
 /*

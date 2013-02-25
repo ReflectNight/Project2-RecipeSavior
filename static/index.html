@@ -29,7 +29,9 @@
 				<td><h1>My Recipe Savior</h1></td>
 				<td><img src="http://i.imgur.com/pD6F4bs.png"></td>
 				</tr>
-				</table>
+				</table>	
+
+				<h1>Recipe Saver</h1>
 
 			</div>
 
@@ -41,7 +43,7 @@
 			
 				<div class="displayPage">
 
-					<!-- displayed on welcome-->
+
 					<div id ="welcomePage" class ="notepad">
 						<h3>Welcome to Recipe Savior</h3> <br>
 						<p> This is a new way for you to keep track of all the recipies you love and use! 
@@ -50,32 +52,26 @@
 						</p>
 
 					</div>
-
-					<!-- How to create a new recipe-->
 					<div id ="newRecipe" class ="notepad">
 
+					<form id="newForm" action="javascript:addRecipe()">
 						<h3>Enter a new recipe </h3><br>
-						<form id="newForm" action="javascript:addRecipe()">
+						Recipe Name: <input type="text" id="name"><br>
+						Ingredients: <br> <textarea class="stretcharea" id="ingre" rows = "5" cols = "40" 
+							placeholder = "enter ingredients here, separate each with a coma"></textarea> <br>
 							
-							Recipe Name: <input type="text" id="name"><br>
-							Ingredients: <br> <textarea class="stretcharea" id="ingre" rows = "5" cols = "40" 
-								placeholder = "Enter ingredient list here, separate with new line"></textarea> <br>
-								
-							Directions: <br> <textarea class="stretcharea" id="dir" rows = "10" cols = "40" 
-								placeholder= "Enter directions here, separate each step with a new line"></textarea> <br>
-							Image: <input type="text" id="foodpic"><br>
-							
-							<input id="submitButton" name="Submit"  type="submit" 
-								value="Add New Recipe"/>
-
-						</form>
+						Directions: <br> <textarea class="stretcharea" id="dir" rows = "10" cols = "40" 
+							placeholder= "enter directions here, separate each step with a new line"></textarea> <br>
+						Image: <input type="text" id="foodpic"><br>
+						
+						<input id="submitButton" name="Submit"  type="submit" 
+							value="Add New Recipe"/>
 
 					</div>
 
-					<!-- Searching for a recipe-->
 					<div id ="searchRecipe" class ="notepad">
 						<h3>Looking for something? </h3> <br>
-						<form id="searchForm" action="javascript:search()">
+						<form id="searchForm">
 
 							<b>Search:</b>  <input type="text" name="search" placeholder="Type in a keyword here"><br><br>
 							<button name="search" formmethod="post" > Search </button>
@@ -85,9 +81,6 @@
 						</div>
 
 					</div>
-
-
-					<!-- Editing a recipe-->
 					<div id ="editRecipe" class ="notepad">
 						<h3>Edit Your Recipe!</h3>
 						<div id="editForm">
@@ -95,17 +88,13 @@
 						</div>
 
 					</div>
-
 					<!--
 					<div id ="deleteRecipe" class ="notepad">
 						 maybe i dont need this idkk 
 					</div>-->
-
-					<!-- Displays a random reipe, this will be added with jquery-->
-					<div id ="displayRecipe" class ="notepad">
-						<div id="displayText"></div>
-						<div id="inScroll" class="scrollbox" ></div>
-						<div id="dirScroll" class="scrollbox"></div>
+					<div id ="displayRecipe" class ="notepad"	>
+						
+						
 						<!-- lets the user scroll through the recipe, needs left and right arrow-->
 					</div>
 				

@@ -11,6 +11,7 @@ $('#menuview').click(function(){
 	
 	hideEverything();
 	$('#displayRecipe').show();
+	getRandomRecipe();
 });
 
 $('#menunew').click(function(){
