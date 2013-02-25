@@ -33,7 +33,14 @@ $('#menuedit').click(function(){
 	hideEverything();
 	$('#editRecipe').show();
 });
-
+$('#viewRarrow').click(function(){
+	
+	
+});
+$('#viewLarrow').click(function(){
+	
+	
+});
 function hideEverything(){
 	
 	$('#newRecipe').hide();
