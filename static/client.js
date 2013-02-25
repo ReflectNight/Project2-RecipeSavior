@@ -42,13 +42,14 @@ function refresh(){
 }
 
 function showRecipe(id){
+	$.ajax({
 	$("#displayRecipe").html(
-		<h4>id.title</h4> <br>
+		$("displayText").html(<h4>id.title</h4>);
 		$("#inScroll").html(id.ingredients);
 		$("#inScroll").html(id.directions);
 
 	);
-
+	});
 }
 
 

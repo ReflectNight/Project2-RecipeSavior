@@ -41,7 +41,7 @@
 			
 				<div class="displayPage">
 
-
+					<!-- displayed on welcome-->
 					<div id ="welcomePage" class ="notepad">
 						<h3>Welcome to Recipe Savior</h3> <br>
 						<p> This is a new way for you to keep track of all the recipies you love and use! 
@@ -50,40 +50,29 @@
 						</p>
 
 					</div>
+
+					<!-- How to create a new recipe-->
 					<div id ="newRecipe" class ="notepad">
 
-					<form id="newForm" action="javascript:addRecipe()">
 						<h3>Enter a new recipe </h3><br>
-						Recipe Name: <input type="text" id="name"><br>
-						Ingredients: <br> <textarea class="stretcharea" id="ingre" rows = "5" cols = "40" 
-							placeholder = "Enter ingredient list here, separate with new line"></textarea> <br>
+						<form id="newForm" action="javascript:addRecipe()">
 							
-						Directions: <br> <textarea class="stretcharea" id="dir" rows = "10" cols = "40" 
-							placeholder= "Enter directions here, separate each step with a new line"></textarea> <br>
-						Image: <input type="text" id="foodpic"><br>
-						
-						<input id="submitButton" name="Submit"  type="submit" 
-							value="Add New Recipe"/>
+							Recipe Name: <input type="text" id="name"><br>
+							Ingredients: <br> <textarea class="stretcharea" id="ingre" rows = "5" cols = "40" 
+								placeholder = "Enter ingredient list here, separate with new line"></textarea> <br>
+								
+							Directions: <br> <textarea class="stretcharea" id="dir" rows = "10" cols = "40" 
+								placeholder= "Enter directions here, separate each step with a new line"></textarea> <br>
+							Image: <input type="text" id="foodpic"><br>
+							
+							<input id="submitButton" name="Submit"  type="submit" 
+								value="Add New Recipe"/>
 
-					<!--</form>
-
-					<div id ="new" class ="notepad">
-
-						
-						<h3>New Recipe</h3>
-					
-						<form id="newForm">
-						<br>
-						Recipe Name: <input type="text" name="name"><br>
-						Ingredients: <br> <textarea class="strecharea" name="ingre" rows="5"cols ="40" placeholder="enter ingredients here, separate each with a coma"></textarea> <br>
-						Directions: <br> <textarea class="strecharea" name="dir" rows="10"cols ="40" placeholder="enter directions here, separate each step with a new line"></textarea> <br>
-						Image: <input type="text" name="foodpic"><br><br>
-						<button type="submit" name="submitNew" formmethod="post" > Add New Recipe </button>
-
-					</form>-->
+						</form>
 
 					</div>
 
+					<!-- Searching for a recipe-->
 					<div id ="searchRecipe" class ="notepad">
 						<h3>Looking for something? </h3> <br>
 						<form id="searchForm" action="javascript:search()">
@@ -96,6 +85,9 @@
 						</div>
 
 					</div>
+
+
+					<!-- Editing a recipe-->
 					<div id ="editRecipe" class ="notepad">
 						<h3>Edit Your Recipe!</h3>
 						<div id="editForm">
@@ -103,16 +95,17 @@
 						</div>
 
 					</div>
+
 					<!--
 					<div id ="deleteRecipe" class ="notepad">
 						 maybe i dont need this idkk 
 					</div>-->
-					<div id ="displayRecipe" class ="notepad">
 
-						<div id="inScroll" class="scrollbox" >
-						</div>
-						<div id="dirScroll" class="scrollbox">
-						</div>
+					<!-- Displays a random reipe, this will be added with jquery-->
+					<div id ="displayRecipe" class ="notepad">
+						<div id="displayText"></div>
+						<div id="inScroll" class="scrollbox" ></div>
+						<div id="dirScroll" class="scrollbox"></div>
 						<!-- lets the user scroll through the recipe, needs left and right arrow-->
 					</div>
 				
