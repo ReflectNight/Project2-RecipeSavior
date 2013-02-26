@@ -62,8 +62,6 @@ h5{
 .canvas{
 	position: absolute;
 	top:0px;
-	
-
 }
 .container{
 	position: absolute;
@@ -81,7 +79,7 @@ h5{
 }
 .header{
 	height:60px;
-	background-color: #ffffff;
+	/*background-color: #ffffff;*/
 	text-align: left;
 	border-radius:10px;
 	text-align: center;

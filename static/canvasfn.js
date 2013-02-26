@@ -20,40 +20,44 @@ function onMouseDown(event) {
 
 function showFood(imgsrc){
 
-	
 	console.log(imgsrc+"<<< imgsrc ");
 	redrawCanvas();
 	
 	var img = new Image;
-	img.src=imgsrc;
-	var width=img.width;
-	var height=img.height;
-
-	//adjusts for height/width problems	
-	if(width>maxw){
-
-		var diff=maxw-width-20;
-		var newW=width+diff;
-		var percentdiff=newW/width;
-		height=height*percentdiff;
-		width=width*percentdiff;
-	}
-	if (height>maxh){
-
-		var diff=maxw-height-20;
-		var newH=height+diff;
-		var percentdiff=newH/height;
-		height=height*percentdiff;
-		width=width*percentdiff;
-	}
-	//console.log("NEW w:"+width+ " h:"+height);
-	diff=0;
-
-	var halfw= width/2;
-	var halfh= height/2;
+	
 	img.onload = function(){
-		ctx.drawImage(img,(cenx-halfw)-45,(ceny-halfh),width,height);
+		var width=img.width;
+		var height=img.height;
+		if(width===0 || height===0)
+		{
+			img.src="http://i.imgur.com/uvB5FXA.png";// there is no img
+		}
+		//adjusts for height/width problems	
+		if(width>maxw){
+
+			var diff=maxw-width-20;
+			var newW=width+diff;
+			var percentdiff=newW/width;
+			height=height*percentdiff;
+			width=width*percentdiff;
+		}
+		if (height>maxh){
+
+			var diff=maxw-height-20;
+			var newH=height+diff;
+			var percentdiff=newH/height;
+			height=height*percentdiff;
+			width=width*percentdiff;
+		}
+		//console.log("NEW w:"+width+ " h:"+height);
+		diff=0;
+
+		var halfw= width/2;
+		var halfh= height/2;
+		
+			ctx.drawImage(img,(cenx-halfw)-45,(ceny-halfh),width,height);
 	};
+	img.src=imgsrc;
 }
 
 function redrawCanvas(){
