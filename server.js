@@ -102,18 +102,32 @@ app.put("/recipeList/:id", function(request, response){
 							"directions": request.body.directions,
 							"imageURL": request.body.imageURL};
 							
-  item.title = (item.title !== undefined) ? item.title : oldItem.title;
-  item.ingredients = (item.ingredients !== undefined) ? 
-		item.ingredients : oldItem.ingredients;
-	item.directions = (item.directions !== undefined) ? 
-		item.directions : oldItem.directions;
+	var successful = 
+      (item.title !== "") &&
+			(item.ingredients !== "") &&
+			(item.directions !== "") &&
+			(item.imageURL !== "");
+	
+	if (successful) {
+    item.title = (item.title !== undefined) ? item.title : oldItem.title;
+		item.ingredients = (item.ingredients !== undefined) ? 
+			item.ingredients : oldItem.ingredients;
+		item.directions = (item.directions !== undefined) ? 
+			item.directions : oldItem.directions;
+		item.imageURL = (item.imageURL !== undefined) ? 
+			item.imageURL : oldItem.imageURL;
 
-  // commit the update
-  recipeList[id] = item;
+		// commit the update
+		recipeList[id] = item;
+  } 
+	else {
+    item = undefined;
+		console.log("recipe editing unsuccessful.");
+  }
 
   response.send({
     item: item,
-    success: true
+    success: successful
   });
 	
 });

@@ -250,17 +250,22 @@ function edit(id, title, ingredients, directions, imageURL){
 				"directions": directions, "imageURL": imageURL},
       url: "/recipeList/" + id,
       success: function(data) { 
-				var recipe = recipeList[id];
-				
-				recipe.title = (title !== undefined) ? recipe.title : title;
-				recipe.ingredients = (ingredients !== undefined) ? 
-					recipe.ingredients : ingredients;
-				recipe.directions = (directions !== undefined) ? 
-					recipe.directions : directions;
-				recipe.imageURL = (imageURL !== undefined) ? 
-					recipe.imageURL : imageURL;
-				
-				refresh();
+				if(data.success){
+					var recipe = recipeList[id];
+					
+					recipe.title = (title !== undefined) ? recipe.title : title;
+					recipe.ingredients = (ingredients !== undefined) ? 
+						recipe.ingredients : ingredients;
+					recipe.directions = (directions !== undefined) ? 
+						recipe.directions : directions;
+					recipe.imageURL = (imageURL !== undefined) ? 
+						recipe.imageURL : imageURL;
+					
+					refresh();
+				}
+				else{
+					alert("Fill in all fields!");
+				}
 			}
     });
 }
