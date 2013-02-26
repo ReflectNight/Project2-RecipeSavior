@@ -53,6 +53,13 @@ window.onload = function() {
 		var directionsInput = $("#editDir");
 		var imageURLInput = $("#editFoodlink");
 		
+		console.log("Ingredients: " + recipeList[id].ingredients);
+		
+		titleInput.removeAttr("value");
+		ingredientsInput.html("");
+		directionsInput.html("");
+		imageURLInput.removeAttr("value");
+		
 		titleInput.attr("value", recipeList[id].title);
 		ingredientsInput.html(recipeList[id].ingredients);
 		directionsInput.html(recipeList[id].directions);
@@ -114,11 +121,12 @@ function getRandomRecipe(){
 }
 
 function loadRecipe(id, data){
+	console.log(data);
 	var item = 
-		{"title" : data.recipeList.title,
-		"ingredients" : data.recipeList.ingredients,
-		"directions" : data.recipeList.directions,
-		"imageURL" : data.recipeList.imageURL};
+		{"title" : data.title,
+		"ingredients" : data.ingredients,
+		"directions" : data.directions,
+		"imageURL" : data.imageURL};
 	
 	var titleid = $("#displayText");
   titleid.html("");
@@ -191,9 +199,10 @@ function get(){
     type: "get",
 		url: "/recipeList/" + encodeURI(id),
 		success: function(data) {
+			console.log("returned: ");
+			console.log(data.item);
 			recipeList[id] = data.item;
-			refresh(id, data);
-			console.log(data);
+			refresh(id, data.item);
 		}
   });
 }
@@ -254,13 +263,13 @@ function edit(id, title, ingredients, directions, imageURL){
 				if(data.success){
 					var recipe = recipeList[id];
 					
-					recipe.title = (title !== undefined) ? recipe.title : title;
+					recipe.title = (title !== undefined) ? title : recipe.title;
 					recipe.ingredients = (ingredients !== undefined) ? 
-						recipe.ingredients : ingredients;
+						ingredients : recipe.ingredients;
 					recipe.directions = (directions !== undefined) ? 
-						recipe.directions : directions;
+						directions : recipe.directions;
 					recipe.imageURL = (imageURL !== undefined) ? 
-						recipe.imageURL : imageURL;
+						imageURL : recipe.imageURL;
 					
 					refresh();
 				}
