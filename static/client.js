@@ -39,9 +39,44 @@ window.onload = function() {
 		}
 	});
 	
+	$('#menuedit').click(function(){
+		var element = $("#displayText");
+		var id = parseInt(element.attr("data-recipe-id"), 10);
+		
+		hideEverything();
+		$('#editRecipe').show();
+		
+		$("#editRecipe").attr("data-recipe-id", id);
+		
+		var titleInput = $("#editTitle");
+		var ingredientsInput = $("#editIngre");
+		var directionsInput = $("#editDir");
+		var imageURLInput = $("#editFoodlink");
+		
+		titleInput.attr("value", recipeList[id].title);
+		ingredientsInput.html(recipeList[id].ingredients);
+		directionsInput.html(recipeList[id].directions);
+		imageURLInput.attr("value", recipeList[id].imageURL);
+		
+	});
+	
 // When the Edit button is clicked, redirect to editing page.
-	$("#menuedit").click(function() {
-		// code here
+	$("#editBtn").click(function() {
+		var id = $("#editRecipe").attr("data-recipe-id");
+	
+		var titleInput = $("#editTitle");
+		var ingredientsInput = $("#editIngre");
+		var directionsInput = $("#editDir");
+		var imageURLInput = $("#editFoodLink");
+		
+		edit(id, titleInput.val(), ingredientsInput.val(), directionsInput.val(),
+			imageURLInput.val());
+			
+		hideEverything();
+		$('#displayRecipe').show();
+		$('#menuedit').show();
+		$('#menudelete').show();
+		getRecipe(id);
 	});
 }
 
@@ -157,6 +192,7 @@ function get(){
 		url: "/recipeList/" + encodeURI(id),
 		success: function(data) {
 			refresh(id, data);
+			console.log(data);
 		}
   });
 }
@@ -202,7 +238,7 @@ function add(title, ingredients, directions, imageURL){
 /*
  * edit(id): Edits a preexisting recipe with the id "id".
 */
-function edit(id){
+function edit(id, title, ingredients, directions, imageURL){
 	$.ajax({
       type: "put",
       data: {"title": title, "ingredients": ingredients, 

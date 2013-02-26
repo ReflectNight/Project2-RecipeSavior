@@ -28,12 +28,6 @@ $('#menusearch').click(function(){
 	$('#searchRecipe').show();
 });
 
-$('#menuedit').click(function(){
-	
-	hideEverything();
-	$('#editRecipe').show();
-});
-
 
 function hideEverything(){
 	
