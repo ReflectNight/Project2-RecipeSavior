@@ -214,6 +214,11 @@ function add(title, ingredients, directions, imageURL){
       url: "/recipeList",
       success: function(data) {
 				if (data.success){
+					var titleInput = $("#name");
+					var ingredientsInput = $("#ingre");
+					var directionsInput = $("#dir");
+					var imageURLInput = $("#foodpic");
+				
 					//Reset the text fields.
 					titleInput.val("");
 					ingredientsInput.val("");
