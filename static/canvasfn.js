@@ -3,6 +3,7 @@
 
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
+var canvasoverlay = new Image;
 var maxh = 500-10;
 var maxw = 400-10;
 var cenx=285;
@@ -70,6 +71,11 @@ function redrawCanvas(){
 	ctx.fillStyle = "rgba(254, 251 ,252, 0.50)";
 	roundedRect(ctx, 40, 125, 400, 500, 20);
 	ctx.fillRect(40, 125, 400, 500);
+
+	canvasoverlay.onload=function(){
+		ctx.drawImage(canvasoverlay,0,0);
+	};
+	canvasoverlay.src="http://i.imgur.com/Pj24Uhp.png";
 }
 
 function roundedRect(ctx,x,y,width,height,radius){
