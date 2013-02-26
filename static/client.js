@@ -125,7 +125,7 @@ function searchRecipe(){
 	var recipesFound = findRecipes(query);
 	
 	if (recipesFound.length === 0){
-		//alert?
+		alert("No recipes found!");
 	}
 	else{
 		//get scrolly box
