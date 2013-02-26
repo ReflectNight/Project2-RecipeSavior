@@ -71,16 +71,17 @@ app.post("/recipeList", function(request, response) {
 	console.log(item);
 							
 	var successful = 
-      (item.title !== undefined) &&
-			(item.ingredients !== undefined) &&
-			(item.directions !== undefined) &&
-			(item.imageURL !== undefined);
+      (item.title !== "") &&
+			(item.ingredients !== "") &&
+			(item.directions !== "") &&
+			(item.imageURL !== "");
 	
 	if (successful) {
     recipeList.push(item);
     writeFile("recipes.txt", JSON.stringify(recipeList));
 		console.log("recipe posted!");
-  } else {
+  } 
+	else {
     item = undefined;
 		console.log("recipe posting unsuccessful.");
   }

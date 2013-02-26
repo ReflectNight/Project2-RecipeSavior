@@ -3,6 +3,48 @@
 //global for all recipe storage
 var recipeList;
 
+window.onload = function() {
+	// When the Delete button is clicked, delete the block.
+	$("#menudelete").click(function() {
+		var element = $("#displayText");
+		var id = parseInt(element.attr("data-recipe-id"), 10);
+	
+		if (recipeList.length !== 0){
+			console.log("Delete called.");
+			del(id);
+			
+			recipeList.splice(id, 1);
+		}
+		
+		console.log("Current id: " + id);
+		console.log("Current length: " + recipeList.length);
+		
+		if(recipeList.length === 0){
+			var titleid = $("#displayText");
+			titleid.html("");
+			var ingreid = $("#inScroll");
+			ingreid.html("");
+			var dirid = $("#dirScroll");
+			dirid.html("");
+	
+			alert("ERROR: No recipes found!");
+			hideEverything();
+			$('#newRecipe').show();
+		}
+		else if (id === recipeList.length){
+			getRecipe(0);
+		}
+		else {
+			getRecipe(id);
+		}
+	});
+	
+// When the Edit button is clicked, redirect to editing page.
+	$("#menuedit").click(function() {
+		// code here
+	});
+}
+
 // addRecipe: Adds a recipe from the text fields in the html to
 // the server recipeList.
 function addRecipe(){
@@ -20,17 +62,15 @@ function addRecipe(){
 		// Add fields to the listing.
 		add(titleInput.val(), ingredientsInput.val(), directionsInput.val(),
 			imageURLInput.val());
-	
-		//Reset the text fields.
-		titleInput.val("");
-		ingredientsInput.val("");
-		directionsInput.val("");
-		imageURLInput.val("");
 }
 
 function getRandomRecipe(){
+	$('#displayRecipe').show();
+
 	if(recipeList.length === 0){
 		alert("ERROR: No recipes found!");
+		hideEverything();
+		$('#newRecipe').show();
 	}
 	else{
 		var randomID = Math.floor(Math.random()*recipeList.length);
@@ -46,11 +86,11 @@ function loadRecipe(id, data){
 		"imageURL" : data.recipeList.imageURL};
 	
 	var titleid = $("#displayText");
-  	titleid.html("");
-  	var ingreid = $("#inScroll");
-  	ingreid.html("");
-  	var dirid = $("#dirScroll");
-  	dirid.html("");
+  titleid.html("");
+  var ingreid = $("#inScroll");
+  ingreid.html("");
+  var dirid = $("#dirScroll");
+  dirid.html("");
 	
 	item.ingredients = "\n"+item.ingredients
 	item.ingredients = item.ingredients.split("\n").join("<br />- ");
@@ -70,24 +110,8 @@ function loadRecipe(id, data){
 	dirid.append(directions);
 	//imageURL: deal with later
 	
-	// When the Delete button is clicked, delete the block.
-		$("#menudelete").click(function() {
-			var element = $(this).parent();
-			var id = element.attr("id");
-			del(id);
-			console.log(id);
-			if(recipeList.length === 0)
-				alert("ERROR: No recipes found!");
-			else if (id === recipeList.length)
-				getRecipe(0);
-			else getRecipe(id);
-		});
-		
-	// When the Edit button is clicked, redirect to editing page.
-		$("#menuedit").click(function() {
-			// code here
-		});
-	
+	$("#displayText").attr("data-recipe-id",id);
+
 }
 
 // refresh: refreshes the html; redirects to new page? may have to
@@ -152,19 +176,27 @@ function add(title, ingredients, directions, imageURL){
       data: {"title": title, "ingredients": ingredients, 
 				"directions": directions, "imageURL": imageURL},
       url: "/recipeList",
-      success: function(data) { 
-				console.log("Add success!");
-				recipeList.push({
-					title: title,
-					ingredients: ingredients,
-					directions: directions,
-					imageURL: imageURL
-				});
-				refresh();
+      success: function(data) {
+				if (data.success){
+					//Reset the text fields.
+					titleInput.val("");
+					ingredientsInput.val("");
+					directionsInput.val("");
+					imageURLInput.val("");
+				
+					recipeList.push({
+						title: title,
+						ingredients: ingredients,
+						directions: directions,
+						imageURL: imageURL
+					});
+					refresh();
+				}
+				else{
+					alert("Fill in all fields!");
+				}
 			}
     });
-		
-		console.log("recipe added!");
 }
 
 /*
@@ -196,14 +228,12 @@ function edit(id){
  * del(id): Deletes a preexisting recipe with the id "id".
 */
 function del(id){
+	console.log("Deleting " + id);
+
 	$.ajax({
       type: "delete",
       url: "/recipeList/" + id,
-      success: function(data) { 
-				console.log("deletion success");
-				recipeList.splice(id, 1);
-				refresh();
-      }
+      success: function(data) {}
     });
 }
 
