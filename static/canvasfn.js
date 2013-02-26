@@ -3,7 +3,6 @@
 
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-var canvasoverlay = new Image;
 var maxh = 500-10;
 var maxw = 400-10;
 var cenx=285;
@@ -72,6 +71,7 @@ function redrawCanvas(){
 	roundedRect(ctx, 40, 125, 400, 500, 20);
 	ctx.fillRect(40, 125, 400, 500);
 
+	var canvasoverlay = new Image;
 	canvasoverlay.onload=function(){
 		ctx.drawImage(canvasoverlay,0,0);
 	};
