@@ -102,6 +102,8 @@ app.put("/recipeList/:id", function(request, response){
 			(item.imageURL !== "");
 	
 	if (successful) {
+		console.log("imageURL: " + item.imageURL);
+	
     item.title = (item.title !== undefined) ? item.title : oldItem.title;
 		item.ingredients = (item.ingredients !== undefined) ? 
 			item.ingredients : oldItem.ingredients;
@@ -112,6 +114,9 @@ app.put("/recipeList/:id", function(request, response){
 
 		// commit the update
 		recipeList[id] = item;
+		
+		writeFile("recipes.txt", JSON.stringify(recipeList));
+		console.log(recipeList);
   } 
 	else {
     item = undefined;

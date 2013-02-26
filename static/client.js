@@ -74,7 +74,7 @@ window.onload = function() {
 		var titleInput = $("#editTitle");
 		var ingredientsInput = $("#editIngre");
 		var directionsInput = $("#editDir");
-		var imageURLInput = $("#editFoodLink");
+		var imageURLInput = $("#editFoodlink");
 		
 		edit(id, titleInput.val(), ingredientsInput.val(), directionsInput.val(),
 			imageURLInput.val());
@@ -85,6 +85,40 @@ window.onload = function() {
 		$('#menudelete').show();
 		getRecipe(id);
 	});
+	
+	$('#menusearch').click(function(){
+		searchRecipe();
+	});
+}
+
+// findRecipes: Finds an array of recipes which contain the query.
+function findRecipes(query){
+	get();
+	
+	console.log("query: " + query);
+	
+	var foundRecipes = [];
+
+	for(var i = 0; i < recipeList.length; i++){
+		if(recipeList[i].title.indexOf(query) !== -1 ||
+		recipeList[i].ingredients.indexOf(query) !== -1 ||
+		recipeList[i].directions.indexOf(query) !== -1){
+			foundRecipes.push(recipeList[i]);
+		}
+	}
+	
+	return foundRecipes;
+}
+
+function searchRecipe(){
+	var searchInput = $("#searchBar");
+	var query = searchInput.val();
+	var recipesFound = findRecipes(query);
+	
+	//update DOM here.
+		//get scrolly box
+		//stick data into div
+		//put div in box
 }
 
 // addRecipe: Adds a recipe from the text fields in the html to
@@ -106,6 +140,7 @@ function addRecipe(){
 			imageURLInput.val());
 }
 
+// getRandomRecipe: Retrieves a random recipe.
 function getRandomRecipe(){
 	$('#displayRecipe').show();
 
