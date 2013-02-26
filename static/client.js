@@ -85,38 +85,6 @@ window.onload = function() {
 		$('#menudelete').show();
 		getRecipe(id);
 	});
-	
-	$('#menusearch').click(function(){
-		searchRecipe();
-	});
-}
-
-// findRecipes: Finds an array of recipes which contain the query.
-function findRecipes(query){
-	get();
-	
-	var foundRecipes = [];
-
-	for(var i = 0; i < recipeList.length; i++){
-		if(recipeList[i].title.indexOf(query) !== -1 ||
-		recipeList[i].ingredients.indexOf(query) !== -1 ||
-		recipeList[i].directions.indexOf(query) !== -1){
-			foundRecipes.push(recipeList[i]);
-		}
-	}
-	
-	return foundRecipes;
-}
-
-function searchRecipe(){
-	var searchInput = $("#searchBar");
-	var query = searchInput.val();
-	var recipesFound = findRecipes(query);
-	
-	//update DOM here.
-		//get scrolly box
-		//stick data into div
-		//put div in box
 }
 
 // addRecipe: Adds a recipe from the text fields in the html to
@@ -138,7 +106,6 @@ function addRecipe(){
 			imageURLInput.val());
 }
 
-// getRandomRecipe: Retrieves a random recipe.
 function getRandomRecipe(){
 	$('#displayRecipe').show();
 
@@ -150,6 +117,7 @@ function getRandomRecipe(){
 	else{
 		var randomID = Math.floor(Math.random()*recipeList.length);
 		getRecipe(randomID);
+		
 	}
 }
 
@@ -162,13 +130,13 @@ function loadRecipe(id, data){
 		"imageURL" : data.imageURL};
 	
 	var titleid = $("#displayText");
-  titleid.html("");
-  var ingreid = $("#inScroll");
-  ingreid.html("");
-  var dirid = $("#dirScroll");
-  dirid.html("");
+	titleid.html("");
+	var ingreid = $("#inScroll");
+	ingreid.html("");
+	var dirid = $("#dirScroll");
+	dirid.html("");
 	
-	item.ingredients = "\n"+item.ingredients
+	item.ingredients = "\n"+item.ingredients;
 	item.ingredients = item.ingredients.split("\n").join("<br />- ");
 
 	item.directions = item.directions.split("\n").join("<br /><br />");
@@ -187,6 +155,7 @@ function loadRecipe(id, data){
 	//imageURL: deal with later
 	
 	$("#displayText").attr("data-recipe-id",id);
+	showFood(item.imageURL);
 
 }
 

@@ -8,6 +8,7 @@ var maxw = 400-10;
 var cenx=285;
 var ceny=380;
 redrawCanvas();
+console.log("canvas fns");
 
 
 function onMouseDown(event) {
@@ -28,10 +29,7 @@ function showFood(imgsrc){
 	img.onload = function(){
 		var width=img.width;
 		var height=img.height;
-		if(width===0 || height===0)
-		{
-			img.src="http://i.imgur.com/uvB5FXA.png";// there is no img
-		}
+		
 		//adjusts for height/width problems	
 		if(width>maxw){
 
@@ -57,7 +55,12 @@ function showFood(imgsrc){
 		
 			ctx.drawImage(img,(cenx-halfw)-45,(ceny-halfh),width,height);
 	};
-	img.src=imgsrc;
+	if((imgsrc.indexOf("png")!=-1)||imgsrc.indexOf("jpeg")!=-1||imgsrc.indexOf("gif")!=-1||imgsrc.indexOf("jpg")!=-1)
+		img.src=imgsrc;
+	else
+		img.src="http://i.imgur.com/uvB5FXA.png";// there is no img
+
+
 }
 
 function redrawCanvas(){
