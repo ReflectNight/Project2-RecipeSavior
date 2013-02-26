@@ -19,6 +19,58 @@ function onMouseDown(event) {
 
 }
 
+function getMousePos(event){
+	var x = event.clientX - canvas.offsetLeft; 
+    var y = event.clientY - canvas.offsetTop;
+    //console.log("x: " + x + ", y :" + y);
+}
+
+function clearCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  var w = canvas.width;
+  canvas.width = 1;
+  canvas.width = w;
+}
+
+function roundedRect(ctx,x,y,width,height,radius){
+    ctx.beginPath();
+    ctx.moveTo(x,y+radius);
+    ctx.lineTo(x,y+height-radius);
+    ctx.quadraticCurveTo(x,y+height,x+radius,y+height);
+    ctx.lineTo(x+width-radius,y+height);
+    ctx.quadraticCurveTo(x+width,y+height,x+width,y+height-radius);
+    ctx.lineTo(x+width,y+radius);
+    ctx.quadraticCurveTo(x+width,y,x+width-radius,y);
+    ctx.lineTo(x+radius,y);
+    ctx.quadraticCurveTo(x,y,x,y+radius);
+    ctx.stroke();
+}
+
+function redrawCanvas(){
+
+	console.log("redrawing...");
+	clearCanvas();
+	ctx.fillStyle = "rgba(254, 251 ,252, 0.50)";
+	roundedRect(ctx, 40, 125, 400, 500, 20);
+	ctx.fillRect(40, 125, 400, 500);
+
+	var canvasoverlay = new Image;
+	canvasoverlay.onload=function(){
+		ctx.drawImage(canvasoverlay,0,0);
+	};
+	canvasoverlay.src="http://i.imgur.com/Pj24Uhp.png";
+}
+
+function drawArrows(){
+
+	console.log("arrowing");
+	var baseArrow = new Image;
+	baseArrow.onload=function(){
+		ctx.drawImage(baseArrow,0,0);
+	}
+	baseArrow.src="http://i.imgur.com/4MZkDtA.png";
+}
+
 function showFood(imgsrc){
 
 	console.log(imgsrc+"<<< imgsrc ");
@@ -59,45 +111,9 @@ function showFood(imgsrc){
 		img.src=imgsrc;
 	else
 		img.src="http://i.imgur.com/uvB5FXA.png";// there is no img
-
-
+	//drawArrows();
 }
-
-function redrawCanvas(){
-
-	console.log("redrawing...");
-	clearCanvas();
-	ctx.fillStyle = "rgba(254, 251 ,252, 0.50)";
-	roundedRect(ctx, 40, 125, 400, 500, 20);
-	ctx.fillRect(40, 125, 400, 500);
-
-	var canvasoverlay = new Image;
-	canvasoverlay.onload=function(){
-		ctx.drawImage(canvasoverlay,0,0);
-	};
-	canvasoverlay.src="http://i.imgur.com/Pj24Uhp.png";
-}
-
-function roundedRect(ctx,x,y,width,height,radius){
-    ctx.beginPath();
-    ctx.moveTo(x,y+radius);
-    ctx.lineTo(x,y+height-radius);
-    ctx.quadraticCurveTo(x,y+height,x+radius,y+height);
-    ctx.lineTo(x+width-radius,y+height);
-    ctx.quadraticCurveTo(x+width,y+height,x+width,y+height-radius);
-    ctx.lineTo(x+width,y+radius);
-    ctx.quadraticCurveTo(x+width,y,x+width-radius,y);
-    ctx.lineTo(x+radius,y);
-    ctx.quadraticCurveTo(x,y,x,y+radius);
-    ctx.stroke();
-}
-
 
 canvas.addEventListener('mousedown', onMouseDown, false);
+canvas.addEventListener('mousemove', getMousePos, false);
 
-function clearCanvas() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  var w = canvas.width;
-  canvas.width = 1;
-  canvas.width = w;
-}
