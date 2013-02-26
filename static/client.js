@@ -85,10 +85,7 @@ window.onload = function() {
 		$('#menudelete').show();
 		getRecipe(id);
 	});
-	
-	$('#menusearch').click(function(){
-		searchRecipe();
-	});
+
 }
 
 // findRecipes: Finds an array of recipes which contain the query.
@@ -103,27 +100,80 @@ function findRecipes(query){
 		if(recipeList[i].title.indexOf(query) !== -1 ||
 		recipeList[i].ingredients.indexOf(query) !== -1 ||
 		recipeList[i].directions.indexOf(query) !== -1){
-			foundRecipes.push(recipeList[i]);
+			foundRecipes.push({"id" : i, "recipe" : recipeList[i]});
 		}
 	}
 	
 	return foundRecipes;
 }
 
+function getNextRecipe(id){
+	getRecipe((id + 1 + recipeList.length)%recipeList.length);
+}
+
+function getPreviousRecipe(id){
+	getRecipe((id - 1 + recipeList.length)%recipeList.length);
+}
+
+// searchRecipe: Searches for recipes matching the query and loads
+// all recipes.
 function searchRecipe(){
+	console.log("Searching.....");
 	var searchInput = $("#searchBar");
 	var query = searchInput.val();
 	var recipesFound = findRecipes(query);
 	
-	//update DOM here.
+	if (recipesFound.length === 0){
+		//alert?
+	}
+	else{
 		//get scrolly box
-		//stick data into div
-		//put div in box
+		var scrollBox = $("#searchResults");
+		scrollBox.html("");
+		console.log(scrollBox);
+		scrollBox.css("height", "500");
+		scrollBox.css("width", "377");
+	
+		for(var i = 0; i < recipesFound.length; i++){
+			//update DOM here.
+			var newDiv = $("<div>");
+			newDiv.attr("class", "recipeSearchResult");
+			newDiv.attr("id", recipesFound[i].id);
+			//stick data into div
+			
+			var title = $("<p>").html(recipesFound[i].recipe.title);
+			var ingredients = $("<p>").html(
+				recipesFound[i].recipe.ingredients.split("\n").join("<br />- "));
+			
+			var text = "Recipe: " + recipesFound[i].recipe.title +
+				"<br><br>Ingredients: " + 
+				recipesFound[i].recipe.ingredients.split("\n").join("<br />- ");
+			
+			var titleAndIngre = $("<p>").html(text);
+			
+			newDiv.append(title);
+			newDiv.append("<br>");
+			newDiv.append(ingredients);
+			newDiv.css("text-overflow", "ellipsis");
+			
+			//put div in box
+			scrollBox.append(newDiv);
+			
+		}
+		
+		// When a div is clicked, get recipel.
+		$(".recipeSearchResult").click(function() {
+			var element = $(this);
+			var id = element.attr("id");
+			getRecipe(id);
+		});
+	}
 }
 
 // addRecipe: Adds a recipe from the text fields in the html to
 // the server recipeList.
 function addRecipe(){
+	console.log("addRecipe");
 	// Get the text fields.
 		var titleInput = $("#name");
 		var ingredientsInput = $("#ingre");
@@ -152,12 +202,15 @@ function getRandomRecipe(){
 	else{
 		var randomID = Math.floor(Math.random()*recipeList.length);
 		getRecipe(randomID);
-		
 	}
 }
 
 function loadRecipe(id, data){
-	console.log(data);
+	hideEverything();
+	$('#displayRecipe').show();
+	$('#menuedit').show();
+	$('#menudelete').show();
+	
 	var item = 
 		{"title" : data.title,
 		"ingredients" : data.ingredients,

@@ -55,16 +55,16 @@
 							Image(Direct URL Link): <input type="text" id="foodpic"><br><br>
 							</p>
 							<input id="submitButton" name="Submit"  type="submit" value="Add New Recipe" class="btn"/>
-
+						</form>
 						</div>
 
 					<div id ="searchRecipe" class ="notepad">
 						<h3>Looking for something? </h3> <br>
-						<form id="searchForm">
+						<form id="searchForm" action="javascript:searchRecipe()">
 							<p><br><br>
-							     <input type="text" name="search" placeholder="Type in a keyword here" size="58"><br><br>
+							     <input type="text" name="search" id = "searchBar" placeholder="Type in a keyword here" size="62"><br><br>
 							</p>
-							<button name="search" formmethod="post" id="searchBtn" class="btn"> Search </button>
+							<input type="submit" name="search" id="searchBtn" class="btn"> </input>
 
 						</form>
 						<div id ="searchResults" class="scrollbox"> </div>

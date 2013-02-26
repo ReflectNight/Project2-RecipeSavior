@@ -240,3 +240,21 @@ textarea{
 	background-color: #885511;
 	color:white;
 }
+
+#searchResults .recipeSearchResult{
+	width: 360px;
+	height: 100px;
+	margin: 5px;
+	padding: 5px;
+	
+	border: 5px;
+	border-radius: 5px;
+	border-color: #ddccaa;
+	border-right-width: 2px;
+	border-right-color: #886644;
+	border-bottom-width: 2px;
+	border-bottom-color:#886644;
+	
+	border-color: black;
+	background-color: #eeddbb;
+}
