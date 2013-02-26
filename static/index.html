@@ -11,20 +11,18 @@
 
 	<!--Site layout-->
 	<body>
-		<div class "bigContainer">
+		<div class="bigContainer">
 
 		<div class="container">
 
 			<div class="header">
 
-				<table align="center">
-				<tr>
-				<td><img src="http://i.imgur.com/SYRiHFv.png"></td>
-				<td><h1>My Recipe Savior</h1></td>
-				<td><img src="http://i.imgur.com/pD6F4bs.png"></td>
-				</tr>
-				</table>	
-
+				<div id="miniheader">
+				
+					<img src="http://i.imgur.com/SYRiHFv.png" class="inlineBlock">
+					<h1>My Recipe Savior</h1>
+					<img src="http://i.imgur.com/pD6F4bs.png" class="inlineBlock">
+				</div>
 			</div>
 
 			<div class="picbox">
@@ -46,37 +44,47 @@
 					</div>
 					<div id ="newRecipe" class ="notepad">
 
-					<form id="newForm" action="javascript:addRecipe()">
 						<h3>Enter a new recipe </h3><br>
-						Recipe Name: <input type="text" id="name"><br>
-						Ingredients: <br> <textarea class="stretcharea" id="ingre" rows = "5" cols = "40" 
-							placeholder = "Enter ingredients here, separate each with a new line"></textarea> <br>
-							
-						Directions: <br> <textarea class="stretcharea" id="dir" rows = "10" cols = "40" 
-							placeholder= "Enter directions here, separate each step with a new line"></textarea> <br>
-						Image: <input type="text" id="foodpic"><br>
-						
-						<input id="submitButton" name="Submit"  type="submit" 
-							value="Add New Recipe"/>
+						<form id="newForm" action="javascript:addRecipe()">
+							<p>
+							Recipe Name: <input type="text" id="name"><br>
+							Ingredients: <br> <textarea class="stretcharea" id="ingre" rows = "5" cols = "40" 
+								placeholder = "Enter ingredients here, separate each with a new line"></textarea> <br>
+								
+							Directions: <br> <textarea class="stretcharea" id="dir" rows = "10" cols = "40" 
+								placeholder= "Enter directions here, separate each step with a new line"></textarea> <br>
+							Image: <input type="text" id="foodpic"><br><br>
+							</p>
+							<input id="submitButton" name="Submit"  type="submit" value="Add New Recipe" class="btn"/>
 
-					</div>
+						</div>
 
 					<div id ="searchRecipe" class ="notepad">
 						<h3>Looking for something? </h3> <br>
 						<form id="searchForm">
-
-							<b>Search:</b>  <input type="text" name="search" placeholder="Type in a keyword here"><br><br>
-							<button name="search" formmethod="post" > Search </button>
+							<p><br><br>
+							     <input type="text" name="search" placeholder="Type in a keyword here" size="62"><br><br>
+							</p>
+							<button name="search" formmethod="post" id="searchBtn" class="btn"> Search </button>
 
 						</form>
-						<div id ="searchResults">
+						<div id ="searchResults" class="scrollbox"> 
 						</div>
 
 					</div>
 					<div id ="editRecipe" class ="notepad">
 						<h3>Edit Your Recipe!</h3>
 						<div id="editForm">
-							<!--<button type="submit" name="edit" formmethod="post" > Finished editing</button>-->
+							<p>
+							Recipe Name:<input type="text" id="editTitle"><br>
+
+							Ingredients:<br><textarea class="stretcharea" id="editIngre" rows = "5" cols = "40" ></textarea><br>
+
+							Directions:<br><textarea class="stretcharea" id="editDir" rows = "10" cols = "40" ></textarea><br>
+
+							Image: <input type="text" id="editFoodlink"><br><br>
+							</p>
+							<button type="submit" name="edit" id="editBtn" class="btn">Finished</button>
 						</div>
 
 					</div>
@@ -91,10 +99,10 @@
 						<div id="dirScroll" class="scrollbox"></div>
 
 						<!-- lets the user scroll through the recipe, needs left and right arrow-->
-						<div id="recipeArrow">
-							<img src="http://i.imgur.com/JHIJzbI.png" id="viewLarrow" class="left" height="40" width="80">
-							<img src="http://i.imgur.com/mZFagXt.png" id="viewRarrow" class="right" height="40" width="80">
-						</div>
+						<div id="viewLarrow" class="left"></div>
+						<div id="viewRarrow" class="right" ></div>
+
+						
 					</div>
 				
 				</div><!--End display-->
