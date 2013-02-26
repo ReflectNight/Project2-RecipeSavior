@@ -117,6 +117,7 @@ function getRandomRecipe(){
 	else{
 		var randomID = Math.floor(Math.random()*recipeList.length);
 		getRecipe(randomID);
+		
 	}
 }
 
@@ -129,13 +130,13 @@ function loadRecipe(id, data){
 		"imageURL" : data.imageURL};
 	
 	var titleid = $("#displayText");
-  titleid.html("");
-  var ingreid = $("#inScroll");
-  ingreid.html("");
-  var dirid = $("#dirScroll");
-  dirid.html("");
+	titleid.html("");
+	var ingreid = $("#inScroll");
+	ingreid.html("");
+	var dirid = $("#dirScroll");
+	dirid.html("");
 	
-	item.ingredients = "\n"+item.ingredients
+	item.ingredients = "\n"+item.ingredients;
 	item.ingredients = item.ingredients.split("\n").join("<br />- ");
 
 	item.directions = item.directions.split("\n").join("<br /><br />");
@@ -154,6 +155,7 @@ function loadRecipe(id, data){
 	//imageURL: deal with later
 	
 	$("#displayText").attr("data-recipe-id",id);
+	showFood(item.imageURL);
 
 }
 

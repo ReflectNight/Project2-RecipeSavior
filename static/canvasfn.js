@@ -19,35 +19,45 @@ function onMouseDown(event) {
 }
 function showFood(imgsrc){
 
+	
+	console.log(imgsrc+"<<< imgsrc ");
 	redrawCanvas();
-	var width=imgsrc.width;
-	var height=imgsrc.height;
-	var img = new Image;   
+	
+	var img = new Image;
+	img.src=imgsrc;
+	var width=img.width;
+	var height=img.height;
 
+	//adjusts for height/width problems	
 	if(width>maxw){
-		var diff=maxw-width;
-		width=width-diff;
-		height=height-diff;
+		var diff=maxw-width-20;
+		var newW=width+diff;
+		var percentdiff=newW/width;
+		height=height*percentdiff;
+		width=width*percentdiff;
+
 	}
 	if (height>maxh){
-		var diff=maxw-height;
-		width=width-diff;
-		height=height-diff;
+
+		var diff=maxw-height-20;
+		var newH=height+diff;
+		var percentdiff=newH/height;
+		height=height*percentdiff;
+		width=width*percentdiff;
+
 	}
+	//console.log("NEW w:"+width+ " h:"+height);
 	diff=0;
 
-	var halfw=width/2;
-	var halfh=height/2;
+	var halfw= width/2;
+	var halfh= height/2;
 
-	img.onload=function(){
-		ctx.drawImage(imgsrc,cenx-halfw,ceny-halfh,width,height);
-	}
-	img=imgsrc;
+	ctx.drawImage(img,(cenx-halfw)-45,(ceny-halfh),width,height);
 }
 function redrawCanvas(){
 	console.log("redrawing...");
 	clearCanvas();
-	ctx.fillStyle = "rgba(254, 251 ,252, 0.25)";
+	ctx.fillStyle = "rgba(254, 251 ,252, 0.50)";
 	roundedRect(ctx, 40, 125, 400, 500, 20);
 	ctx.fillRect(40, 125, 400, 500);
 
