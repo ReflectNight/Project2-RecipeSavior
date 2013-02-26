@@ -258,3 +258,7 @@ textarea{
 	border-color: black;
 	background-color: #eeddbb;
 }
+
+.recipeSearchResult:hover{
+	background-color: #fff;
+}
