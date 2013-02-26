@@ -34,11 +34,6 @@ function writeFile(filename, data, callbackFn) {
   });
 }
 
-
-function findRecipe(){
-	//hash table? or just iterate through entire array?
-}
-
 //get entire list of recipes
 app.get("/recipeList", function(request, response){
   response.send({
@@ -46,8 +41,6 @@ app.get("/recipeList", function(request, response){
     success: true
   });
 });
-
-//get a page of recipes (?)
 
 //get one recipe
 app.get("/recipeList/:id", function(request, response){
