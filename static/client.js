@@ -108,7 +108,8 @@ function findRecipes(query){
 }
 
 function getNextRecipe(id){
-	getRecipe((id + 1 + recipeList.length)%recipeList.length);
+	getRecipe((id + 1)%recipeList.length);
+	console.log(id);
 }
 
 function getPreviousRecipe(id){
@@ -383,10 +384,9 @@ function del(id){
     });
 }
 
-/*
 function getCurrID(){
-	var element = $(this).parent();
-	var id = element.attr("id");
+	var element = $("#displayText");
+	var id = parseInt(element.attr("data-recipe-id"));
 	return id;
 }
 
@@ -395,17 +395,14 @@ $('#viewRarrow').click(function(){
 	console.log("next");
 	var id = getCurrID();
 	var nxt = getNextRecipe(id);
-	loadRecipe(nxt, recipeList[nxt]);	
 });
 
 $('#viewLarrow').click(function(){
 	
 	console.log("prev");
 	var id = getCurrID();
-	var prev = getPrevRecipe(id);
-	loadRecipe(prev, recipeList[prev]);	
+	var prev = getPreviousRecipe(id);
 });
-*/
 
 $(document).ready(function() {
 	get();
