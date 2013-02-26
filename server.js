@@ -54,7 +54,7 @@ app.get("/recipeList/:id", function(request, response){
   var id = request.params.id;
   var item = recipeList[id];
   response.send({
-    recipeList: item,
+    item: item,
     success: (item !== undefined)
   });
 });

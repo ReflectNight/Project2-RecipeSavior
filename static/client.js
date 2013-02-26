@@ -191,6 +191,7 @@ function get(){
     type: "get",
 		url: "/recipeList/" + encodeURI(id),
 		success: function(data) {
+			recipeList[id] = data.item;
 			refresh(id, data);
 			console.log(data);
 		}
