@@ -81,7 +81,8 @@ h5{
 }
 .header{
 	height:60px;
-	background-color: #ffffff;
+	background-image: url(http://i.imgur.com/pj3RvSZ.png);
+	background-size:980px, 60px;
 	text-align: left;
 	border-radius:10px;
 	text-align: center;
