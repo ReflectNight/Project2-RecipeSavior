@@ -13,7 +13,7 @@ $('#menuview').click(function(){
 	$('#displayRecipe').show();
 	$('#menuedit').show();
 	$('#menudelete').show();
-	$('#myCanvas').show();
+
 	getRandomRecipe();
 
 });
@@ -33,7 +33,8 @@ $('#menusearch').click(function(){
 
 function hideEverything(){
 	
-	//$('#myCanvas').hide();
+	redrawCanvas();
+
 	$('#newRecipe').hide();
 	$('#searchRecipe').hide();
 	$('#editRecipe').hide();
