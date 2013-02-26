@@ -119,20 +119,24 @@ function getPreviousRecipe(id){
 // searchRecipe: Searches for recipes matching the query and loads
 // all recipes.
 function searchRecipe(){
+
+	$("#searchResults").empty();
 	console.log("Searching.....");
 	var searchInput = $("#searchBar");
 	var query = searchInput.val();
 	var recipesFound = findRecipes(query);
 	
 	if (recipesFound.length === 0){
-		alert("No recipes found!");
+		var none = $("<h3>").html("This Query is empty!");
+		$("#searchResults").append(none);
+		//alert? changes to search
 	}
 	else{
 		//get scrolly box
 		var scrollBox = $("#searchResults");
 		scrollBox.html("");
 		console.log(scrollBox);
-		scrollBox.css("height", "500");
+
 		scrollBox.css("width", "377");
 	
 		for(var i = 0; i < recipesFound.length; i++){
@@ -142,7 +146,7 @@ function searchRecipe(){
 			newDiv.attr("id", recipesFound[i].id);
 			//stick data into div
 			
-			var title = $("<p>").html(recipesFound[i].recipe.title);
+			var title = $("<h4>").html(recipesFound[i].recipe.title);
 			var ingredients = $("<p>").html(
 				recipesFound[i].recipe.ingredients.split("\n").join("<br />- "));
 			
@@ -162,12 +166,27 @@ function searchRecipe(){
 			
 		}
 		
-		// When a div is clicked, get recipel.
+		//draws the current food that is displayed
+		var currResult;
+		$('.recipeSearchResult').mouseover(function(){
+			var element = $(this);
+			var id = element.attr("id");
+			var imgsrc = recipeList[id].imageURL;
+			//console.log(id +" and src: "+imgsrc);
+			if(currResult!=id){
+				showFood(imgsrc);
+			}
+			currResult=id;
+
+		});
+
+		// When a div is clicked, get recipe.
 		$(".recipeSearchResult").click(function() {
 			var element = $(this);
 			var id = element.attr("id");
 			getRecipe(id);
-		});
+		});		
+		
 	}
 }
 
@@ -226,7 +245,7 @@ function loadRecipe(id, data){
 	dirid.html("");
 	
 	item.ingredients = "\n"+item.ingredients;
-	item.ingredients = item.ingredients.split("\n").join("<br />- ");
+	item.ingredients = item.ingredients.split("\n").join("<br /> &#8226; &#8194; ");
 
 	item.directions = item.directions.split("\n").join("<br /><br />");
 
@@ -332,7 +351,10 @@ function add(title, ingredients, directions, imageURL){
 						directions: directions,
 						imageURL: imageURL
 					});
+
+					alert("You added "+titleInput+"!");	
 					refresh();
+
 				}
 				else{
 					alert("Fill in all fields!");
@@ -365,7 +387,7 @@ function edit(id, title, ingredients, directions, imageURL){
 					refresh();
 				}
 				else{
-					alert("Fill in all fields!");
+					alert("Please fill in all fields!");
 				}
 			}
     });
@@ -375,13 +397,17 @@ function edit(id, title, ingredients, directions, imageURL){
  * del(id): Deletes a preexisting recipe with the id "id".
 */
 function del(id){
-	console.log("Deleting " + id);
 
-	$.ajax({
-      type: "delete",
-      url: "/recipeList/" + id,
-      success: function(data) {}
-    });
+	var r=confirm("Are you sure you wish to delete this recipe?");
+	if (r===true){
+		console.log("Deleting " + id);
+
+		$.ajax({
+	      type: "delete",
+	      url: "/recipeList/" + id,
+	      success: function(data) {}
+	    });
+	}
 }
 
 function getCurrID(){
