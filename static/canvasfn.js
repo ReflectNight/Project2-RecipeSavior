@@ -13,10 +13,11 @@ redrawCanvas();
 function onMouseDown(event) {
     var x = event.pageX - canvas.offsetLeft; 
     var y = event.pageY - canvas.offsetTop;
-    console.log("x: " + x + ", y :" + y)
+    //console.log("x: " + x + ", y :" + y)
     //figure out the area of all the boxes and arrows
 
 }
+
 function showFood(imgsrc){
 
 	
@@ -30,12 +31,12 @@ function showFood(imgsrc){
 
 	//adjusts for height/width problems	
 	if(width>maxw){
+
 		var diff=maxw-width-20;
 		var newW=width+diff;
 		var percentdiff=newW/width;
 		height=height*percentdiff;
 		width=width*percentdiff;
-
 	}
 	if (height>maxh){
 
@@ -44,23 +45,24 @@ function showFood(imgsrc){
 		var percentdiff=newH/height;
 		height=height*percentdiff;
 		width=width*percentdiff;
-
 	}
 	//console.log("NEW w:"+width+ " h:"+height);
 	diff=0;
 
 	var halfw= width/2;
 	var halfh= height/2;
-
-	ctx.drawImage(img,(cenx-halfw)-45,(ceny-halfh),width,height);
+	img.onload = function(){
+		ctx.drawImage(img,(cenx-halfw)-45,(ceny-halfh),width,height);
+	};
 }
+
 function redrawCanvas(){
+
 	console.log("redrawing...");
 	clearCanvas();
 	ctx.fillStyle = "rgba(254, 251 ,252, 0.50)";
 	roundedRect(ctx, 40, 125, 400, 500, 20);
 	ctx.fillRect(40, 125, 400, 500);
-
 }
 
 function roundedRect(ctx,x,y,width,height,radius){
