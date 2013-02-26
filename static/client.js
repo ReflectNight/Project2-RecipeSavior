@@ -207,6 +207,35 @@ function del(id){
     });
 }
 
+/*
+$('#viewRarrow').click(function(){
+	console.log("next");
+	var element = $(this).parent();
+	var id = element.attr("id");
+	var nxt = id+1;
+	if (id>recipeList.length)
+		nxt=1;
+	console.log(nxt);
+	console.log(recipeList[nxt]);
+	loadRecipe(nxt, recipeList[nxt]);
+	
+});
+
+$('#viewLarrow').click(function(){
+	console.log("prev");
+	var element = $(this).parent();
+	var id = element.attr("id");
+	var prev =id-1;
+	if(prev===0)
+		prev=recipeList.length;
+	console.log(prev);
+	console.log(recipeList[prev]);
+	loadRecipe(prev, recipeList[prev]);
+	
+	
+});*/
+
+
 $(document).ready(function() {
 	get();
 });
