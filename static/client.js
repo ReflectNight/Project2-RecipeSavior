@@ -55,16 +55,10 @@ window.onload = function() {
 		
 		console.log("Ingredients: " + recipeList[id].ingredients);
 		
-		titleInput.removeAttr("value");
-		ingredientsInput.html("");
-		directionsInput.html("");
-		imageURLInput.removeAttr("value");
-		
-		titleInput.attr("value", recipeList[id].title);
-		ingredientsInput.html(recipeList[id].ingredients);
-		directionsInput.html(recipeList[id].directions);
-		imageURLInput.attr("value", recipeList[id].imageURL);
-		
+		titleInput.val(recipeList[id].title);
+		ingredientsInput.val(recipeList[id].ingredients);
+		directionsInput.val(recipeList[id].directions);
+		imageURLInput.val(recipeList[id].imageURL);
 	});
 	
 // When the Edit button is clicked, redirect to editing page.
@@ -353,7 +347,8 @@ function add(title, ingredients, directions, imageURL){
 					});
 
 					refresh();
-
+					alert("Recipe added!");
+					getRecipe(recipeList.length - 1);
 				}
 				else{
 					alert("Fill in all fields!");
