@@ -1,0 +1,14 @@
+What we wanted:
+A recipe saving device that should have basic CRUD functionality + search in order to create your own recipe book. 
+
+1) layout of the project - we wanted something static, easy to use, easy to figure out ( 1 - sketch of layout.png)
+2) creation of HTML/CSS with Javascript running the functionality - made it girly and cutsey, colour scheme of pink/pastel
+3) decision to use jquery tabs instead of multiple pages to app more smooth (3 - in between.png)
+4) hiding the view/delete tabs until you are on a specific recipe page
+5) search implemented: view recipe name + some ingredients to get basic idea of recipe, decided to take out multiple image insertion option for ease of use => simplicity
+6) left side of project created - canvas function to show the image of what the recipe looked like (6 - added canvas.png)
+7) use of placeholder text to tell user what to do + hover to ensure user knows what is clickable, have a image to tell user image was not found
+8) User testing + changes (list of comments - Thrusday lecture)
+9) implemented canvas functions with search to display what they are currently hovering on
+10) Confirmation so that user knows when deleted, created something
+11) end product ( end product 1, 2.png )

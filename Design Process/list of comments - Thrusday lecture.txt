@@ -1,0 +1,18 @@
+hitting enter on search should search without me clicking submit
+
+hitting new recipie should clear the current picture on the left
+
+should have some bulelt point in the ingredient text box so the user knows the format to enter in ingredients
+
+after creating recipie, i think it should automatically bring you to the most recently created recipie.
+
+would be nice if you could upload photo of your own.
+
+search no work, arrows no work :(
+
+maybe add delete confirmation
+
+how do you go back to the main page? is there a main page?
+
+arrow keys no work?
+unfortunate ingredient things overlap in search
