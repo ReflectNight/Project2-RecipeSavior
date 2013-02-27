@@ -54,14 +54,10 @@ app.get("/recipeList/:id", function(request, response){
 
 //create new recipe
 app.post("/recipeList", function(request, response) {
-	console.log("posting recipe...");
-
 	var item = {"title": request.body.title,
 							"ingredients": request.body.ingredients,
 							"directions": request.body.directions,
 							"imageURL": request.body.imageURL};
-							
-	console.log(item);
 							
 	var successful = 
       (item.title !== "") &&
@@ -72,12 +68,10 @@ app.post("/recipeList", function(request, response) {
 	if (successful) {
     recipeList.push(item);
     writeFile("recipes.txt", JSON.stringify(recipeList));
-		console.log("recipe posted!");
   } 
 	else {
     item = undefined;
-		console.log("recipe posting unsuccessful.");
-  }
+		}
 							
 	response.send({ 
     item: item,
@@ -102,8 +96,6 @@ app.put("/recipeList/:id", function(request, response){
 			(item.imageURL !== "");
 	
 	if (successful) {
-		console.log("imageURL: " + item.imageURL);
-	
     item.title = (item.title !== undefined) ? item.title : oldItem.title;
 		item.ingredients = (item.ingredients !== undefined) ? 
 			item.ingredients : oldItem.ingredients;
@@ -116,11 +108,9 @@ app.put("/recipeList/:id", function(request, response){
 		recipeList[id] = item;
 		
 		writeFile("recipes.txt", JSON.stringify(recipeList));
-		console.log(recipeList);
   } 
 	else {
     item = undefined;
-		console.log("recipe editing unsuccessful.");
   }
 
   response.send({

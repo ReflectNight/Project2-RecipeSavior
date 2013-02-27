@@ -1,0 +1,115 @@
+=======================
+GROUP MEMBERS
+=======================
+Angela Qiu (aqiu)
+Sarah Chen (swchen)
+
+
+=======================
+DOCUMENTATION
+=======================
+Grading Help.txt: This file. A guide to help graders identify addressed elements in this project.
+
+README.txt: The readme file. Includes a description of the project and instructions on how to use it.
+
+
+=======================
+REQUIRED ELEMENTS
+=======================
+==Element: Javascript==
+File: static/canvasfn.js, static/client.js, server.js
+Description: 
+
+static/client.js:
+Lines 6 - 56: Used window.onload to set up event listeners for clicking the tabs to the right of the recipe book. 
+Lines 80 - 94: Iterated through an array using a for loop to find all relevant recipes using a query. Relevant recipes are all recipes containing the query as a substring somewhere in the text.
+Line 200: Randomized a recipe for the user to view using Math functions. Used in the "view" tab.
+Lines 224 - 227: Used the string object functions to parse a string using a token to help manipulate the text seen in html.
+Lines 319 - 324: Pushed an object onto an array, adding a recipe to the recipe list locally.
+
+server.js:
+Line 127: Removed an object from an array using splice to delete the object.
+
+
+==Element: Canvas==
+File: static/canvasfn.js
+Description: 
+
+static/canvasfn.js:
+Lines 22 - 27: Clears the canvas. Used for clearing when pages not used to view recipes are loaded.
+Lines 29 - 41: Draws a rounded rectangle according to the parameters. Uses a path with quadratic curves for each corner.
+Lines 43 - 53: Redraws the canvas. 
+Lines 56 - 62: Draws arrows for scrolling through recipes in "view" mode.
+Lines 64 - 102: Loads the image when in "view" mode or in "search" mode. Does an automatic resize if the image is too big for the canvas.
+
+
+=Element: HTML=
+File: static/index.html
+Description: 
+
+static/index.html: The html is separated into several different sections by id, such as newRecipe, searchRecipe, editRecipe, and displayRecipe. These sections correspond to possible "pages" a user might see in the application. 
+In the html, we use "forms" with action attributes which execute functions on clicking the submit button in each form.
+We also use input and textareas to allow the user to enter information, such as in adding or editing recipes, or in searching.
+Additionally, we created a menu on the right side of the recipe book, containing list elements of buttons one might click to navigate the application.
+The html includes a canvas, and several scripts, including the client.
+
+
+=Element: CSS=
+File: static/reset.css, static/style.css
+Description: 
+
+static/reset.css: Included to provide a hard reset for css rules across browsers.
+
+static/style.css: In the css, we used classes and ids to create rules, such as giving an element of the class "btn" several rules to give buttons a unique look.
+In addition, we highly made use of the "hover" selector to help highlight the elements which a user mouses over, such as the recipes found when searching for a query. 
+We used margins and padding to space out different elements properly.
+We also decorated the user interface extensively, such as providing a background image, as well as coloring all objects with a similar color scheme.
+
+
+=Element: DOM manipulation=
+File: static/client.js, static/buttonfn.js
+Description: 
+
+static/client.js
+Lines 19 - 24: The html text fields of each of the three DOM elements are cleared if there are no recipes to be loaded in "View" mode.
+Lines 45 - 55: When the edit button on the side of the recipe book is clicked, the user is brought to a page where they can edit a preexisting recipe. The code gets the textboxes in which they can make changes in, and sets the values of the fields to the content of the recipe.
+Lines 106 - 174: This function provides functionality to the search button, found on the side of the recipe book. Once it has recieved all matches to the query, the function gets the scrollable div in which the entries will appear. Then, for each of the matching recipes, a div is created containing text from that div, and it is then included in the scrollable div. 
+Lines 205 - 245: The entirety of the loadRecipe function loads the html for a recipe with a specific id. This is accessible in "View" mode of a recipe.
+
+static/buttonfn.js
+Determines when certain divs should be hidden or shown. For example, when the "menunew" tab to the right of the recipe book is clicked, whatever html the user is currently looking at is hidden, and the html required for creating a new recipe is shown in its place.
+
+
+=Element: jQuery=
+File: static/client.js, server.js
+Description: 
+
+static/client.js:
+Line 8: Sets a click function of an element grabbed from the html using jQuery. In this case, it is loading the next action after a user tries to delete a recipe.
+Lines 19 - 24: Used jQuery to get existing elements in the html to manipulate the DOM. In this case, it is to erase all fields if no recipes are available to be loaded.
+Line 45: Sets an attribute of an element from the html. In this case, the id of the currently loaded recipe is placed in the html attribute "data-recipe-id".
+Lines 127 - 148: DOM manipulation. Created new divs by using jQuery. Set a css rule using the jQuery method ".css" to ensure that when searching for recipes, the text will not flow out of the div.
+*See DOM manipulation, AJAX client, and AJAX server.
+
+=Element: AJAX client=
+File: static/client.js
+Description: 
+
+static/client.js:
+Lines 266 - 275: Get function. Contacts the server with a GET request to get all recipes.
+Lines 281 - 289: getRecipe function. Contacts the server with a GET request to get a recipe with a specific id.
+Lines 295 - 330: add function. Contacts the server with a POST request to post a new recipe to the database.
+Lines 335 - 360: edit function. Contacts the server with a PUT request to edit a preexisting recipe.
+Lines 365 - 375: del function. Contacts the server with a DELETE request to delete a preexisting recipe.
+
+
+=Element: AJAX server=
+File: server.js
+Description: 
+
+server.js:
+Lines 38 - 43: Server executes a GET command to get all recipes.
+Lines 46 - 53: Server executes a GET command to get a single recipe with a specific id at the url "/recipeList/:id". Returns success as true if the recipe exists.
+Lines 56 - 80: Server executes a POST command to post a new recipe to the recipe list. On success, the recipe is written to the file. Returns success as true if the recipe is successfully posted with no blank fields.
+Lines 83 - 121: Server executes a PUT command to edit a preexisting recipe. Returns success as true if no fields are left blank.
+Lines 124 - 133: Server executes a DELETE command to delete a preexisting recipe. Returns success if the recipe exists.

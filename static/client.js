@@ -10,14 +10,10 @@ window.onload = function() {
 		var id = parseInt(element.attr("data-recipe-id"), 10);
 	
 		if (recipeList.length !== 0){
-			console.log("Delete called.");
 			del(id);
 			
 			recipeList.splice(id, 1);
 		}
-		
-		console.log("Current id: " + id);
-		console.log("Current length: " + recipeList.length);
 		
 		if(recipeList.length === 0){
 			var titleid = $("#displayText");
@@ -53,8 +49,6 @@ window.onload = function() {
 		var directionsInput = $("#editDir");
 		var imageURLInput = $("#editFoodlink");
 		
-		console.log("Ingredients: " + recipeList[id].ingredients);
-		
 		titleInput.val(recipeList[id].title);
 		ingredientsInput.val(recipeList[id].ingredients);
 		directionsInput.val(recipeList[id].directions);
@@ -86,8 +80,6 @@ window.onload = function() {
 function findRecipes(query){
 	get();
 	
-	console.log("query: " + query);
-	
 	var foundRecipes = [];
 
 	for(var i = 0; i < recipeList.length; i++){
@@ -103,7 +95,6 @@ function findRecipes(query){
 
 function getNextRecipe(id){
 	getRecipe((id + 1)%recipeList.length);
-	console.log(id);
 }
 
 function getPreviousRecipe(id){
@@ -113,9 +104,8 @@ function getPreviousRecipe(id){
 // searchRecipe: Searches for recipes matching the query and loads
 // all recipes.
 function searchRecipe(){
-
 	$("#searchResults").empty();
-	console.log("Searching.....");
+	
 	var searchInput = $("#searchBar");
 	var query = searchInput.val();
 	var recipesFound = findRecipes(query);
@@ -129,7 +119,6 @@ function searchRecipe(){
 		//get scrolly box
 		var scrollBox = $("#searchResults");
 		scrollBox.html("");
-		console.log(scrollBox);
 
 		scrollBox.css("width", "377");
 	
@@ -166,7 +155,7 @@ function searchRecipe(){
 			var element = $(this);
 			var id = element.attr("id");
 			var imgsrc = recipeList[id].imageURL;
-			//console.log(id +" and src: "+imgsrc);
+
 			if(currResult!=id){
 				showFood(imgsrc);
 			}
@@ -187,17 +176,11 @@ function searchRecipe(){
 // addRecipe: Adds a recipe from the text fields in the html to
 // the server recipeList.
 function addRecipe(){
-	console.log("addRecipe");
 	// Get the text fields.
 		var titleInput = $("#name");
 		var ingredientsInput = $("#ingre");
 		var directionsInput = $("#dir");
 		var imageURLInput = $("#foodpic");
-		
-		console.log(titleInput.val());
-		console.log(ingredientsInput.val());
-		console.log(directionsInput.val());
-		console.log(imageURLInput.val());
 		
 		// Add fields to the listing.
 		add(titleInput.val(), ingredientsInput.val(), directionsInput.val(),
@@ -274,12 +257,11 @@ function refresh(){
 	if (arguments.length === 2){
 		loadRecipe(arguments[0], arguments[1]);
 	}
-	
-	console.log("refreshing...");	
+
 }
 
 /*
- * get(): Gets all recipes. Used for browsing recipes.
+ * get(): Gets all recipes. 
 */
 function get(){
 	 $.ajax({
@@ -287,8 +269,6 @@ function get(){
       url: "/recipeList",
       success: function(data) {
         recipeList = data.recipeList;
-				console.log("GET");
-				console.log(recipeList);
         refresh();
       }
     });
@@ -303,8 +283,6 @@ function get(){
     type: "get",
 		url: "/recipeList/" + encodeURI(id),
 		success: function(data) {
-			console.log("returned: ");
-			console.log(data.item);
 			recipeList[id] = data.item;
 			refresh(id, data.item);
 		}
@@ -312,15 +290,9 @@ function get(){
 }
 
 /*
- * getRecipePage(): Gets a page of recipes. 
- * NOT YET IMPLEMENTED
-*/
-
-/*
  * add(): Adds a recipe to the recipe list.
 */
 function add(title, ingredients, directions, imageURL){
-	console.log("adding recipe...");
 	$.ajax({
       type: "post",
       data: {"title": title, "ingredients": ingredients, 
@@ -394,8 +366,6 @@ function del(id){
 
 	var r=confirm("Are you sure you wish to delete this recipe?");
 	if (r===true){
-		console.log("Deleting " + id);
-
 		$.ajax({
 	      type: "delete",
 	      url: "/recipeList/" + id,
@@ -411,15 +381,11 @@ function getCurrID(){
 }
 
 $('#viewRarrow').click(function(){
-	
-	console.log("next");
 	var id = getCurrID();
 	var nxt = getNextRecipe(id);
 });
 
 $('#viewLarrow').click(function(){
-	
-	console.log("prev");
 	var id = getCurrID();
 	var prev = getPreviousRecipe(id);
 });

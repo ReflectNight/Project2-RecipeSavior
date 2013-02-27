@@ -1,6 +1,5 @@
 //All canvas functions taken care of here
 
-
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 var maxh = 500-10;
@@ -8,21 +7,16 @@ var maxw = 400-10;
 var cenx=285;
 var ceny=380;
 redrawCanvas();
-console.log("canvas fns");
 
 
 function onMouseDown(event) {
     var x = event.pageX - canvas.offsetLeft; 
     var y = event.pageY - canvas.offsetTop;
-    //console.log("x: " + x + ", y :" + y)
-    //figure out the area of all the boxes and arrows
-
 }
 
 function getMousePos(event){
 	var x = event.clientX - canvas.offsetLeft; 
     var y = event.clientY - canvas.offsetTop;
-    //console.log("x: " + x + ", y :" + y);
 }
 
 function clearCanvas() {
@@ -47,8 +41,6 @@ function roundedRect(ctx,x,y,width,height,radius){
 }
 
 function redrawCanvas(){
-
-	console.log("redrawing...");
 	clearCanvas();
 	ctx.fillStyle = "rgba(254, 251 ,252, 0.50)";
 	roundedRect(ctx, 40, 125, 400, 500, 20);
@@ -62,8 +54,6 @@ function redrawCanvas(){
 }
 
 function drawArrows(){
-
-	console.log("arrowing");
 	var baseArrow = new Image;
 	baseArrow.onload=function(){
 		ctx.drawImage(baseArrow,0,0);
@@ -72,8 +62,6 @@ function drawArrows(){
 }
 
 function showFood(imgsrc){
-
-	console.log(imgsrc+"<<< imgsrc ");
 	redrawCanvas();
 	
 	var img = new Image;
@@ -99,7 +87,7 @@ function showFood(imgsrc){
 			height=height*percentdiff;
 			width=width*percentdiff;
 		}
-		//console.log("NEW w:"+width+ " h:"+height);
+		
 		diff=0;
 
 		var halfw= width/2;
@@ -110,8 +98,7 @@ function showFood(imgsrc){
 	if((imgsrc.indexOf("png")!=-1)||imgsrc.indexOf("jpeg")!=-1||imgsrc.indexOf("gif")!=-1||imgsrc.indexOf("jpg")!=-1)
 		img.src=imgsrc;
 	else
-		img.src="http://i.imgur.com/uvB5FXA.png";// there is no img
-	//drawArrows();
+		img.src="http://i.imgur.com/uvB5FXA.png";// there is no image
 }
 
 canvas.addEventListener('mousedown', onMouseDown, false);

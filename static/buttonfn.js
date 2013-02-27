@@ -3,7 +3,6 @@
 $(document).ready(function(){
 	hideEverything();
 	$('#welcomePage').show();
-	console.log("loaded!");
 
 });
 
