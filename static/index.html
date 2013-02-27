@@ -6,6 +6,7 @@
 		<link href="reset.css" rel="stylesheet" type="text.css">
 		<link href="style.css" rel="stylesheet" type="text.css">
 		<link href='http://fonts.googleapis.com/css?family=Petit+Formal+Script' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Sacramento' rel='stylesheet' type='text/css'>
 		<title>Recipe Savior</title>
 	</head>
 
@@ -34,9 +35,9 @@
 
 
 					<div id ="welcomePage" class ="notepad">
-						<h3>Welcome to Recipe Savior</h3> <br>
+						<h3>~~Welcome to Recipe Savior~~</h3> <br>
 						<p> This is a new way for you to keep track of all the recipies you love and use! 
-							You may add, delete, edit a recipe, or you may view all the recipies on file  <br><br>
+							You may add, delete, edit a recipe, or you may view all the recipies on file <br><br>
 							To begin, enter a new recipe using the left menu! <br>
 						</p>
 
@@ -46,12 +47,12 @@
 						<h3>Enter a new recipe </h3><br>
 						<form id="newForm" action="javascript:addRecipe()">
 							<p>
-							Recipe Name: <input type="text" id="name"><br>
+							Recipe Name: <input type="text" id="name"><br><br>
 							Ingredients: <br> <textarea class="stretcharea" id="ingre" rows = "5" cols = "40" 
-								placeholder = "Enter ingredients here, separate each with a new line"></textarea> <br>
+								placeholder = "Enter ingredients here, separate each with a new line"></textarea> <br><br>
 								
 							Directions: <br> <textarea class="stretcharea" id="dir" rows = "10" cols = "40" 
-								placeholder= "Enter directions here, separate each step with a new line"></textarea> <br>
+								placeholder= "Enter directions here, separate each step with a new line"></textarea> <br><br>
 							Image(Direct URL Link): <input type="text" id="foodpic"><br><br>
 							</p>
 							<input id="submitButton" name="Submit"  type="submit" value="Add New Recipe" class="btn"/>
@@ -62,7 +63,7 @@
 						<h3>Looking for something? </h3> <br>
 						<form id="searchForm" action="javascript:searchRecipe()">
 							<p><br><br>
-							     <input type="text" name="search" id = "searchBar" placeholder="Type in a keyword here" size="56"><br><br>
+							     <input type="text" name="search" id = "searchBar" placeholder="Type in a keyword here, or press enter for a full list" size="56"><br><br>
 							</p>
 							<input type="submit" name="search" id="searchBtn" class="btn"> </input>
 
@@ -74,11 +75,11 @@
 						<h3>Edit Your Recipe!</h3>
 						<div id="editForm">
 							<p>
-							Recipe Name:<input type="text" id="editTitle"><br>
+							Recipe Name:<input type="text" id="editTitle"><br><br>
 
-							Ingredients:<br><textarea class="stretcharea" id="editIngre" rows = "5" cols = "40" ></textarea><br>
+							Ingredients:<br><textarea class="stretcharea" id="editIngre" rows = "5" cols = "40" ></textarea><br><br>
 
-							Directions:<br><textarea class="stretcharea" id="editDir" rows = "10" cols = "40" ></textarea><br>
+							Directions:<br><textarea class="stretcharea" id="editDir" rows = "10" cols = "40" ></textarea><br><br>
 
 							Image(Direct URL Link): <input type="text" id="editFoodlink"><br><br>
 							</p>
@@ -113,7 +114,8 @@
 			</div><!--End recipebox-->
 
 			<div class= "footer">
-				Copyright 2013 Angela Qiu & Sarah Chen 
+				<br>
+				Created by Angela Qiu & Sarah Chen &#169; 2013
 			</div>
 		</div><!--End container-->
 
@@ -128,8 +130,6 @@
 		<!-- Script Tags -->
 		<script src="jquery-1.9.0.js"></script>
 		<script src="buttonfn.js"></script>
-		<!-- <script src="recipeaction.js"></script>
-		<script src="foodaction.js"></script> -->
 		<script src="canvasfn.js"></script>
 		<script src="client.js"></script>
 		

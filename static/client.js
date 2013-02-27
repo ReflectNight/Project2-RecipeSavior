@@ -148,11 +148,11 @@ function searchRecipe(){
 			
 			var title = $("<h4>").html(recipesFound[i].recipe.title);
 			var ingredients = $("<p>").html(
-				recipesFound[i].recipe.ingredients.split("\n").join("<br />- "));
+				recipesFound[i].recipe.ingredients.split("\n").join("<br />"));
 			
 			var text = "Recipe: " + recipesFound[i].recipe.title +
 				"<br><br>Ingredients: " + 
-				recipesFound[i].recipe.ingredients.split("\n").join("<br />- ");
+				recipesFound[i].recipe.ingredients.split("\n").join("<br />");
 			
 			var titleAndIngre = $("<p>").html(text);
 			
@@ -352,7 +352,6 @@ function add(title, ingredients, directions, imageURL){
 						imageURL: imageURL
 					});
 
-					alert("You added "+titleInput+"!");	
 					refresh();
 
 				}

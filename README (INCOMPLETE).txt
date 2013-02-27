@@ -18,8 +18,10 @@ HOW-TO
 
 
 ====================
-Credit
+Img&Code Credit
 ====================
 arrows: http://www.iconfinder.com/search/?q=arrow
 background: http://www.pastelpatterns.com/
-http://www.masterfile.com/
+some other images: http://www.masterfile.com/
+Scroll: http://css-tricks.com/
+Fonts: google open font

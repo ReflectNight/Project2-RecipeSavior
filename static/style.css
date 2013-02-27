@@ -4,9 +4,7 @@ Style.css for project 4
 
 body{
 	font-size: 12px;
-	font-family: helvetica, sans-serif;
-	/*background-color: #FAE1EB;*/
-
+	font-family: Tahoma, helvetica, sans-serif;
 }
 .bigContainer{
 
@@ -20,9 +18,7 @@ p{
 	text-align: left;
 }
 
-a{
 
-}
 .left{
 	float:left;
 }
@@ -36,9 +32,9 @@ a{
 
 h1{
 	text-align: center;
-	font-size:40px;
+	font-size:50px;
 	color:black;
-	font-family: 'Petit Formal Script', cursive;
+	font-family: 'Sacramento', cursive;/*'Petit Formal Script', cursive;*/
 	display:inline-block;
 }
 
@@ -62,8 +58,6 @@ h5{
 .canvas{
 	position: absolute;
 	top:0px;
-	
-
 }
 .container{
 	position: absolute;
@@ -75,6 +69,7 @@ h5{
 	margin-left:auto;
 	margin-right:auto;
 	border:2px solid;
+	border-color: #f492a9;
 	border-radius:10px;
 	background-image: url(http://www.pastelpatterns.com/large/largepattern-2.png);
 
@@ -109,6 +104,7 @@ h5{
 .footer{
 	text-align: center;
 	font-size: 8px;
+	color:#666666;
 
 }
 #inScroll{
@@ -121,7 +117,6 @@ h5{
 	/*position:absolute;
 	bottom:20px;*/
 	text-align: center;
-
 }
 .btn{
 	font-size: 14px;
@@ -141,7 +136,7 @@ h5{
 	 text-decoration:none;
 	 font-style: bold;
 	 color:#fff;
-	 background-color: #f6a7ba;
+	 background-color: #f6afc0;
 }
 .scrollbox{
 
@@ -164,13 +159,6 @@ h5{
 	border-right-color: #886644;
 	border-bottom-width: 2px;
 	border-bottom-color:#886644;
-
-
-}
-table
-{ 
-	margin-left: auto;
-	margin-right: auto;
 }
 textarea{
 	resize: none;
@@ -243,6 +231,7 @@ textarea{
 #searchResults{
 	height: 350px;	
 }
+
 #searchResults .recipeSearchResult{
 	width: 340px;
 	height: 100px;
@@ -252,9 +241,9 @@ textarea{
 	border: 5px;
 	border-radius: 5px;
 	border-color: #ddccaa;
-	border-right-width: 2px;
+	border-right-width: 3px;
 	border-right-color: #886644;
-	border-bottom-width: 2px;
+	border-bottom-width: 3px;
 	border-bottom-color:#886644;
 	
 	border-color: black;
@@ -265,8 +254,7 @@ textarea{
 	background-color: #ecb0b0;
 }
 
-
-/*from http://css-tricks.com/custom-scrollbars-in-webkit/*/
+/*customizing scroll bar*/
 ::-webkit-scrollbar {
     width: 12px;
 }
